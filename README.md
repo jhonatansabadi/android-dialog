@@ -20,7 +20,7 @@ repositories {
 Adicione a dependência no arquivo  `build.gradle(Module: app)`
 ```kotlin
 dependencies {
-  implementation 'com.github.jhonatansabadi:SabadiDialog:1.0.0'
+  implementation 'com.github.jhonatansabadi:android-dialog:1.0.0'
 }
 ```
 
