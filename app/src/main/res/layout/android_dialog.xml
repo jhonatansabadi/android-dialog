@@ -67,6 +67,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/customDialogTitle"/>
 
             <TextView
+                    android:padding="16dp"
                     android:id="@+id/customDialogNoButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -82,10 +83,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/customDialogDescription"/>
 
             <TextView
+                    android:padding="16dp"
                     android:id="@+id/customDialogYesButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="32dp"
+                    android:layout_marginEnd="8dp"
                     android:text="Yes"
                     android:textColor="@color/red"
                     android:textSize="14sp"
