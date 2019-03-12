@@ -6,7 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent">
-
     <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,13 +23,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:visibility="gone"
-                    android:id="@+id/customDialogImage"
+                    android:id="@+id/imageDialog"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
                     android:scaleType="centerCrop"/>
 
             <TextView
-                    android:id="@+id/customDialogTitle"
+                    android:id="@+id/titleDialog"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -51,10 +51,10 @@
                     android:textStyle="normal|bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/customDialogImage"/>
+                    app:layout_constraintTop_toBottomOf="@+id/imageDialog"/>
 
             <TextView
-                    android:id="@+id/customDialogDescription"
+                    android:id="@+id/contentDialog"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -63,12 +63,12 @@
                     android:textColor="#000000"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/customDialogTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/customDialogTitle"/>
+                    app:layout_constraintStart_toStartOf="@+id/titleDialog"
+                    app:layout_constraintTop_toBottomOf="@+id/titleDialog"/>
 
             <TextView
                     android:padding="16dp"
-                    android:id="@+id/customDialogNoButton"
+                    android:id="@+id/noButtonDialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -80,11 +80,11 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/customDialogDescription"/>
+                    app:layout_constraintTop_toBottomOf="@+id/contentDialog"/>
 
             <TextView
                     android:padding="16dp"
-                    android:id="@+id/customDialogYesButton"
+                    android:id="@+id/yesButtonDialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -92,9 +92,9 @@
                     android:textColor="@color/red"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/customDialogNoButton"
-                    app:layout_constraintEnd_toStartOf="@+id/customDialogNoButton"
-                    app:layout_constraintTop_toTopOf="@+id/customDialogNoButton"/>
+                    app:layout_constraintBottom_toBottomOf="@+id/noButtonDialog"
+                    app:layout_constraintEnd_toStartOf="@+id/noButtonDialog"
+                    app:layout_constraintTop_toTopOf="@+id/noButtonDialog"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

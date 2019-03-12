@@ -32,17 +32,17 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
     var title: String
         get() = AnkoInternals.noGetter()
         set(value) {
-            customView.customDialogTitle.text = value
+            customView.titleDialog.text = value
         }
 
     fun setTitleStyle(
-        title: String = customView.customDialogTitle.text.toString(),
+        title: String = customView.titleDialog.text.toString(),
         italic: Boolean = false,
-        size: Int= customView.customDialogTitle.textSize.toInt(),
+        size: Int= customView.titleDialog.textSize.toInt(),
         color: Int = R.color.black
     ) {
 
-        customView.customDialogTitle.apply {
+        customView.titleDialog.apply {
             if(this.text.toString().isNotEmpty()) this.text = title
             if (italic) this.setTypeface(this.typeface, Typeface.ITALIC)
             this.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
@@ -51,41 +51,41 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
     }
 
     var titleFontSize: Int
-        get() = customView.customDialogTitle.textSize.toInt()
+        get() = customView.titleDialog.textSize.toInt()
         set(value) {
-            customView.customDialogTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
+            customView.titleDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
     var titleColor = "#000000".toColorInt()
         set(value) {
-            customView.customDialogTitle.textColor = activity.getColor(value)
+            customView.titleDialog.textColor = activity.getColor(value)
         }
 
     var content: String
-        get() = customView.customDialogDescription.text.toString()
+        get() = customView.contentDialog.text.toString()
         set(value) {
-            customView.customDialogDescription.text = value
+            customView.contentDialog.text = value
         }
 
     var contentFontSize: Int
-        get() = customView.customDialogTitle.textSize.toInt()
+        get() = customView.titleDialog.textSize.toInt()
         set(value) {
-            customView.customDialogDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
+            customView.contentDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
     var contentColor = "#000000".toColorInt()
         set(value) {
-            customView.customDialogDescription.textColor = value
+            customView.contentDialog.textColor = value
         }
 
     fun setContentStyle(
-        content: String = customView.customDialogTitle.text.toString(),
+        content: String = customView.titleDialog.text.toString(),
         italic: Boolean = false,
-        size: Int = customView.customDialogDescription.textSize.toInt(),
+        size: Int = customView.contentDialog.textSize.toInt(),
         color: Int = R.color.black
     ) {
 
-        customView.customDialogDescription.apply {
+        customView.contentDialog.apply {
             if(this.text.toString().isNotEmpty()) this.text = content
             if (italic) this.setTypeface(this.typeface, Typeface.ITALIC)
             this.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
@@ -95,67 +95,67 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
 
     fun setImage(
         image: Int,
-        height: Int = customView.customDialogImage.height,
-        width: Int = customView.customDialogImage.width
+        height: Int = customView.imageDialog.height,
+        width: Int = customView.imageDialog.width
     ) {
         showImage = true
         Glide.with(activity)
             .load(image)
-            .into(customView.customDialogImage)
+            .into(customView.imageDialog)
     }
 
     fun setImage(
         imageUrl: String,
-        height: Int = customView.customDialogImage.height,
-        width: Int = customView.customDialogImage.width
+        height: Int = customView.imageDialog.height,
+        width: Int = customView.imageDialog.width
     ) {
         showImage = true
         Glide.with(activity)
             .load(imageUrl)
-            .into(customView.customDialogImage)
+            .into(customView.imageDialog)
     }
 
     fun setImage(
         image: Drawable,
-        height: Int = customView.customDialogImage.height,
-        width: Int = customView.customDialogImage.width
+        height: Int = customView.imageDialog.height,
+        width: Int = customView.imageDialog.width
     ) {
         showImage = true
         Glide.with(activity)
             .load(image)
-            .into(customView.customDialogImage)
+            .into(customView.imageDialog)
     }
 
     fun yesButton(title: String = "Yes", callback: (dialog: AlertDialog) -> Unit) {
-        customView.customDialogYesButton.text = title.toUpperCase()
-        customView.customDialogYesButton.setOnClickListener {
+        customView.yesButtonDialog.text = title.toUpperCase()
+        customView.yesButtonDialog.setOnClickListener {
             callback(dialog)
         }
     }
 
 
     fun noButton(title: String = "No", callback: (dialog: AlertDialog) -> Unit) {
-        customView.customDialogNoButton.text = title.toUpperCase()
-        customView.customDialogNoButton.setOnClickListener {
+        customView.noButtonDialog.text = title.toUpperCase()
+        customView.noButtonDialog.setOnClickListener {
             callback(dialog)
         }
     }
 
     var yesButtonTextColor = R.color.black
         set(value) {
-            customView.customDialogYesButton.textColor = activity.getColor(value)
+            customView.yesButtonDialog.textColor = activity.getColor(value)
         }
 
     var noButtonTextColor = R.color.black
         set(value) {
-            customView.customDialogNoButton.textColor = activity.getColor(value)
+            customView.noButtonDialog.textColor = activity.getColor(value)
         }
 
     private var showImage: Boolean
         get() = false
         set(value) {
             if (value) {
-                customView.customDialogImage.visibility = View.VISIBLE
+                customView.imageDialog.visibility = View.VISIBLE
             }
         }
 }

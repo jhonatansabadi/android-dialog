@@ -29,7 +29,8 @@ class MultiItemAdapter(
     class MultiItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: String){
             itemView.apply {
-                titleMultItem.text = item
+                titleRecyclerDialog.text = item
+                iconRecyclerDialog.visibility = View.GONE
             }
         }
     }

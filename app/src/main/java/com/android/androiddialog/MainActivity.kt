@@ -3,6 +3,7 @@ package com.android.androiddialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import kotlinx.android.synthetic.main.android_dialog.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -71,12 +72,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom3Dialog(view: View) {
-        val itens = mutableListOf<String>()
-        itens.add("jhonatan")
-        itens.add("jhonatan")
+        val itens = mutableListOf(
+            "Apenas uma vez",
+            "Diariamente",
+            "Semanalmente",
+            "Personalizar..."
+        )
         MultiItemDialog(this, itens).apply {
+            setImage(R.drawable.notification_gif)
             title = "Título qualquer"
-            setImage(R.drawable.dialog_image)
         }
 //        AndroidDialog(this).apply {
 //            title = "Title"

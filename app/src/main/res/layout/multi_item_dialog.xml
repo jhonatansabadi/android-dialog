@@ -1,58 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/delete"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:cardCornerRadius="10dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    <LinearLayout
-            android:background="#ffffff"
+        android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/constraint_multi_choice"
-            android:orientation="vertical">
-
-        <androidx.appcompat.widget.AppCompatImageView
-                android:visibility="gone"
-                android:id="@+id/customDialogImageChoice"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"/>
-
-        <TextView
-                android:id="@+id/customDialogTitleChoice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Escolha uma opção"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="normal|bold"/>
-
-        <androidx.core.widget.NestedScrollView
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/delete"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+                android:background="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="16dp">
+                android:id="@+id/constraint_multi_choice"
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:visibility="gone"
+                    android:id="@+id/imageDialog"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"/>
+
+            <TextView
+                    android:id="@+id/titleDialog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Escolha uma opção"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"/>
+
+            <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/recyclerMultiChoice"/>
-        </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="16dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/recyclerViewDialog"/>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
