@@ -71,18 +71,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom3Dialog(view: View) {
-        AndroidDialog(this).apply {
-            title = "Title"
-            setContentStyle(
-                content = "Content",
-                italic = true,
-                color = R.color.green,
-                size = 22
-            )
-            yesButton { toast("YES") }
-            noButton { toast("NO") }
-            noButtonTextColor = R.color.blue
+        val itens = mutableListOf<String>()
+        itens.add("jhonatan")
+        itens.add("jhonatan")
+        MultiItemDialog(this, itens).apply {
+            title = "Título qualquer"
+            setImage(R.drawable.dialog_image)
         }
+//        AndroidDialog(this).apply {
+//            title = "Title"
+//            setContentStyle(
+//                content = "Content",
+//                italic = true,
+//                color = R.color.green,
+//                size = 22
+//            )
+//            yesButton { toast("YES") }
+//            noButton { toast("NO") }
+//            noButtonTextColor = R.color.blue
+//        }
     }
 
 }

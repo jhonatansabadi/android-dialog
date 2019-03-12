@@ -19,7 +19,6 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
     private var dialog: AlertDialog
 
     init {
-
         //init
         customView = activity.layoutInflater.inflate(R.layout.android_dialog, null)
 
@@ -35,7 +34,6 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
         set(value) {
             customView.customDialogTitle.text = value
         }
-
 
     fun setTitleStyle(
         title: String = customView.customDialogTitle.text.toString(),
