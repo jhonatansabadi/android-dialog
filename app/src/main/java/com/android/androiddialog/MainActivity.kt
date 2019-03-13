@@ -3,6 +3,7 @@ package com.android.androiddialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.graphics.toColorInt
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import kotlinx.android.synthetic.main.android_dialog.*
 import org.jetbrains.anko.toast
@@ -75,12 +76,17 @@ class MainActivity : AppCompatActivity() {
     fun custom3Dialog(view: View) {
         val itens = mutableListOf(
             "Item 0",
-            "Item 1",
-            "Item 2",
-            "Item 3"
+            "Item 1"
         )
-        MultiItemDialog(this, itens).apply {
-            title = "Título"
+
+        val icons = mutableListOf(
+            R.drawable.ic_directions_run_black_24dp,
+            R.drawable.ic_directions_walk_black_24dp
+        )
+
+        MultiItemDialog(this, itens, icons).apply {
+            title = "Itens"
+            titleColor = R.color.red
             onItemClickListener { value, position ->
                 toast("value: $value / position: $position")
             }

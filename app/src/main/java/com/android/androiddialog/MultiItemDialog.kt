@@ -18,11 +18,12 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.multi_item_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
-import org.jetbrains.anko.toast
+
 
 class MultiItemDialog(
     val activity: Activity,
-    val itens: MutableList<String>
+    val itens: MutableList<String>,
+    val icons: MutableList<Int>? = null
 ) : AlertDialog.Builder(activity), OnRecyclerClickListener {
 
 
@@ -62,7 +63,7 @@ class MultiItemDialog(
 
     private fun initRecyclerView() {
         customView.recyclerViewDialog.layoutManager = LinearLayoutManager(activity)
-        customView.recyclerViewDialog.adapter = MultiItemAdapter(activity, itens, this)
+        customView.recyclerViewDialog.adapter = MultiItemAdapter(activity, itens, icons,this)
         customView.recyclerViewDialog.hasFixedSize()
         customView.recyclerViewDialog.isNestedScrollingEnabled = true
     }
@@ -70,6 +71,7 @@ class MultiItemDialog(
     var title: String
         get() = AnkoInternals.noGetter()
         set(value) {
+            showTitle = true
             customView.titleDialog.text = value
         }
 
@@ -79,7 +81,7 @@ class MultiItemDialog(
         size: Int = customView.titleDialog.textSize.toInt(),
         color: Int = R.color.black
     ) {
-
+        showTitle = true
         customView.titleDialog.apply {
             if (this.text.toString().isNotEmpty()) this.text = title
             if (italic) this.setTypeface(this.typeface, Typeface.ITALIC)
@@ -138,6 +140,14 @@ class MultiItemDialog(
         set(value) {
             if (value) {
                 customView.imageDialog.visibility = View.VISIBLE
+            }
+        }
+
+    private var showTitle: Boolean
+        get() = false
+        set(value) {
+            if (value) {
+                customView.titleDialog.visibility = View.VISIBLE
             }
         }
 
