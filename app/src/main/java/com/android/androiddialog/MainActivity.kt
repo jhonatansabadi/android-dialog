@@ -74,14 +74,13 @@ class MainActivity : AppCompatActivity() {
 
     fun custom3Dialog(view: View) {
         val itens = mutableListOf(
-            "Apenas uma vez",
-            "Diariamente",
-            "Semanalmente",
-            "Personalizar..."
+            "Item 0",
+            "Item 1",
+            "Item 2",
+            "Item 3"
         )
         MultiItemDialog(this, itens).apply {
-            setImage(R.drawable.notification_gif)
-            title = "Título qualquer"
+            title = "Título"
             onItemClickListener { value, position ->
                 toast("value: $value / position: $position")
             }

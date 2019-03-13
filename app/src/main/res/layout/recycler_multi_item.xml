@@ -20,7 +20,7 @@
             android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/titleRecyclerDialog"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iconRecyclerDialog" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/iconRecyclerDialog"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:textColor="#000000"
             android:textSize="18sp" android:layout_marginBottom="8dp" android:layout_marginTop="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

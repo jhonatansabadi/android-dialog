@@ -12,6 +12,7 @@ import android.view.View
 import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.androiddialog.adapter.MultiItemAdapter
+import com.android.androiddialog.interfaces.OnItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.multi_item_dialog.view.*
@@ -28,9 +29,7 @@ class MultiItemDialog(
     private var customView: View
     private lateinit var dialog: AlertDialog
     private val builder = this
-    private var value = ""
-    private var position = 0
-    private var onItemClick: OnItemClick? = null
+    private var onItemClick: OnItemClickListener? = null
 
     init {
         customView = activity.layoutInflater.inflate(R.layout.multi_item_dialog, null)
@@ -39,19 +38,15 @@ class MultiItemDialog(
         onSetDialog()
     }
 
-    private interface OnItemClick {
-        fun setOnItemClick(value: String, position: Int)
-    }
-
     fun onItemClickListener(callback: (value: String, position: Int) -> Unit ){
-        setOnItemClickListener(object : MultiItemDialog.OnItemClick {
+        setOnItemClickListener(object : OnItemClickListener {
             override fun setOnItemClick(value: String, position: Int) {
                 callback(value, position)
             }
         })
     }
 
-    private fun setOnItemClickListener(onItemClick: OnItemClick) {
+    private fun setOnItemClickListener(onItemClick: OnItemClickListener) {
         this.onItemClick = onItemClick
     }
 
@@ -59,14 +54,13 @@ class MultiItemDialog(
         onItemClick?.setOnItemClick(itens[position], position)
     }
 
-
     private fun onSetDialog() {
         dialog = builder.create()
         dialog.show()
         dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    fun initRecyclerView() {
+    private fun initRecyclerView() {
         customView.recyclerViewDialog.layoutManager = LinearLayoutManager(activity)
         customView.recyclerViewDialog.adapter = MultiItemAdapter(activity, itens, this)
         customView.recyclerViewDialog.hasFixedSize()
