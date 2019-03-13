@@ -9,7 +9,7 @@
     <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
-            app:srcCompat="@drawable/ic_"
+            app:srcCompat="@drawable/ic_directions_run_black_24dp"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/iconRecyclerDialog"
             app:layout_constraintStart_toStartOf="parent"
