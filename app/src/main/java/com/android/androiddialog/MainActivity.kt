@@ -74,16 +74,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom3Dialog(view: View) {
+        AndroidDialog(this).apply {
+            title = "Title"
+            setContentStyle(
+                content = "Content",
+                italic = true,
+                color = R.color.green,
+                size = 22
+            )
+            yesButton { toast("YES") }
+            noButton { toast("NO") }
+            noButtonTextColor = R.color.blue
+        }
+    }
+
+    fun custom4Dialog(view: View) {
         val itens = mutableListOf(
             "Item 0",
             "Item 1"
         )
-
         val icons = mutableListOf(
             R.drawable.ic_directions_run_black_24dp,
             R.drawable.ic_directions_walk_black_24dp
         )
-
         MultiItemDialog(this, itens, icons).apply {
             title = "Itens"
             titleColor = R.color.red
@@ -91,18 +104,6 @@ class MainActivity : AppCompatActivity() {
                 toast("value: $value / position: $position")
             }
         }
-//        AndroidDialog(this).apply {
-//            title = "Title"
-//            setContentStyle(
-//                content = "Content",
-//                italic = true,
-//                color = R.color.green,
-//                size = 22
-//            )
-//            yesButton { toast("YES") }
-//            noButton { toast("NO") }
-//            noButtonTextColor = R.color.blue
-//        }
     }
 
 }
