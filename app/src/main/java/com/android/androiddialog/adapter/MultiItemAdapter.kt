@@ -6,18 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.androiddialog.R
+import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import kotlinx.android.synthetic.main.recycler_multi_item.view.*
 
 class MultiItemAdapter(
     val context: Context,
-    val itens: MutableList<String>
+    val itens: MutableList<String>,
+    val onRecyclerClickListener: OnRecyclerClickListener
 ) : RecyclerView.Adapter<MultiItemAdapter.MultiItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MultiItemViewHolder {
-        return MultiItemViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.recycler_multi_item, parent, false)
+        val holder = MultiItemViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.recycler_multi_item,
+                parent,
+                false
+            )
         )
+        holder.itemView.setOnClickListener {
+            onRecyclerClickListener.setOnRecyclerClick(
+                holder.itemView,
+                holder.adapterPosition
+            )
+        }
+        return holder
     }
 
     override fun getItemCount() = itens.size
@@ -27,7 +39,8 @@ class MultiItemAdapter(
     }
 
     class MultiItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: String){
+
+        fun bind(item: String) {
             itemView.apply {
                 titleRecyclerDialog.text = item
                 iconRecyclerDialog.visibility = View.GONE

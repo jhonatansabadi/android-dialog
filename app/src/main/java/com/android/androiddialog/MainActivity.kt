@@ -3,6 +3,7 @@ package com.android.androiddialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import kotlinx.android.synthetic.main.android_dialog.*
 import org.jetbrains.anko.toast
 
@@ -81,6 +82,9 @@ class MainActivity : AppCompatActivity() {
         MultiItemDialog(this, itens).apply {
             setImage(R.drawable.notification_gif)
             title = "Título qualquer"
+            onItemClickListener { value, position ->
+                toast("value: $value / position: $position")
+            }
         }
 //        AndroidDialog(this).apply {
 //            title = "Title"
