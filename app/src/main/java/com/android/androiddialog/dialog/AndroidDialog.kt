@@ -1,4 +1,4 @@
-package com.android.androiddialog
+package com.android.androiddialog.dialog
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
 import androidx.core.graphics.toColorInt
+import com.android.androiddialog.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.android_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals

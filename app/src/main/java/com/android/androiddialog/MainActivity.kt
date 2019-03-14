@@ -3,9 +3,8 @@ package com.android.androiddialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.core.graphics.toColorInt
-import com.android.androiddialog.interfaces.OnRecyclerClickListener
-import kotlinx.android.synthetic.main.android_dialog.*
+import com.android.androiddialog.dialog.AndroidDialog
+import com.android.androiddialog.dialog.MultiItemDialog
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -94,8 +93,8 @@ class MainActivity : AppCompatActivity() {
             "Item 1"
         )
         val icons = mutableListOf(
-            R.drawable.ic_directions_run_black_24dp,
-            R.drawable.ic_directions_walk_black_24dp
+            R.drawable.run,
+            R.drawable.walk
         )
         MultiItemDialog(this, itens, icons).apply {
             title = "Itens"
