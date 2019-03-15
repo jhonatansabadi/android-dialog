@@ -10,11 +10,11 @@ import android.util.TypedValue
 import android.view.View
 import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.androiddialog.R
 import com.android.androiddialog.adapter.MultiItemAdapter
 import com.android.androiddialog.interfaces.OnItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import com.bumptech.glide.Glide
-import com.github.androiddialog.R
 import kotlinx.android.synthetic.main.multi_item_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
