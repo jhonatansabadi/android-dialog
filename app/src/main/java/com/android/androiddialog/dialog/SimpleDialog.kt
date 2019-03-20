@@ -11,17 +11,17 @@ import android.view.View
 import androidx.core.graphics.toColorInt
 import com.android.androiddialog.R
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.android_dialog.view.*
+import kotlinx.android.synthetic.main.simple_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
 
-class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
+class SimpleDialog(val activity: Activity): AlertDialog.Builder(activity){
     private var customView: View
     private var dialog: AlertDialog
 
     init {
         //init
-        customView = activity.layoutInflater.inflate(R.layout.android_dialog, null)
+        customView = activity.layoutInflater.inflate(R.layout.simple_dialog, null)
 
         this.setView(customView)
         dialog = this.create().apply {

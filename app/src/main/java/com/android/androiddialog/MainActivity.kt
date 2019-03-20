@@ -3,7 +3,7 @@ package com.android.androiddialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.android.androiddialog.dialog.AndroidDialog
+import com.android.androiddialog.dialog.SimpleDialog
 import com.android.androiddialog.dialog.MultiItemDialog
 import org.jetbrains.anko.toast
 
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun simpleDialog(view: View) {
-        AndroidDialog(this).apply {
+        SimpleDialog(this).apply {
             title = "Title"
             content = "Content"
             yesButton { toast("YES") }
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun imageViewDialog(view: View) {
-        AndroidDialog(this).apply {
+        SimpleDialog(this).apply {
             title = "Title"
             content = "Content"
             setImage(R.drawable.dialog_image)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun gifDialog(view: View) {
-        AndroidDialog(this).apply {
+        SimpleDialog(this).apply {
             title = "Title"
             content = "Content"
             setImage(R.drawable.delete)
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom1Dialog(view: View) {
-        AndroidDialog(this).apply {
+        SimpleDialog(this).apply {
             title = "Title"
             titleColor = R.color.red
             titleFontSize = 28
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom2Dialog(view: View) {
-        AndroidDialog(this).apply {
+        SimpleDialog(this).apply {
             setTitleStyle(
                 title = "Title",
                 italic = true,
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom3Dialog(view: View) {
-        AndroidDialog(this).apply {
+        SimpleDialog(this).apply {
             title = "Title"
             setContentStyle(
                 content = "Content",

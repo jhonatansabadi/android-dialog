@@ -26,7 +26,6 @@ class MultiItemDialog(
     val icons: MutableList<Int>? = null
 ) : AlertDialog.Builder(activity), OnRecyclerClickListener {
 
-
     private var customView: View
     private lateinit var dialog: AlertDialog
     private val builder = this
