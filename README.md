@@ -1,3 +1,4 @@
+
 # AndroidDialog
 
 O AndroidDialog veio com a finalidade de facilitar a utilização e customização do AlertDialog do Android.
@@ -5,7 +6,7 @@ Com ele é fácil criar um alert customizando título e subtítulo com cor, tama
 Além disso, é possível adicionar imagens(url e drawable) e gifs(url e drawable), e customizar as dimensões da imagem.
 
 * Todo o código foi feito em `Kotlin`.
-* Suporte a `GIF` utilizando a biblioteca [Glide](https://github.com/bumptech/glide).
+* Suporte a `GIF` e `Imagens` utilizando a biblioteca [Glide](https://github.com/bumptech/glide).
 
 
 ## Adicionando ao projeto:
@@ -20,20 +21,29 @@ repositories {
 Adicione a dependência no arquivo  `build.gradle(Module: app)`
 ```kotlin
 dependencies {
-  implementation 'com.github.jhonatansabadi:SabadiDialog:1.0.0'
+  implementation 'com.github.jhonatansabadi:android-dialog:1.2.0'
 }
 ```
 
 ## Definições
 
 **title:** `String` - Texto que será exibido como título.
+
 **titleColor:** `Int` - Cor do título.
+
 **titleFontSize:** `Int` - Tamanho da fonte do título.
+
 **content:** `String` - Texto que será exibido no subtítulo.
+
 **contentColor:** `Int` - Cor do subtítulo.
+
 **contentFontSize:** `Int` - Tamanho da fonte do subtítulo.
+
 **yesButtonTextColor:** `Int` - Cor do texto do botão de confirmação.
+
 **noButtonTextColor:** `Int` - Cor do texto do botão de rejeição/cancelamento.
+
+
 
 ### Estilos
 Define estilo para título.
@@ -72,23 +82,52 @@ fun noButton {
 	//action
 }
 ```
+Define  o que será feito ao clicar no botão **OK.**
+```kotlin
+fun okButton {
+	//action
+}
+```
 
 ## Como utilizar
 
 #### Simples AlertDialog
+
 ```kotlin
-AndroidDialog(this).apply {
+simpleDialog { //Activity.simpleDialog
   title = "Title"
   content = "Content"
-  yesButton { toast("YES") }
-  noButton { toast("NO") }
 }
 ```
-<img src="images/simple_dialog.jpg" width="200" height="400" />
+<img src="images/simple_dialog_1.jpg" width="200" height="400" />
+
+```kotlin
+simpleDialog {
+  title = "Title"
+  content = "Content"
+  okButton {
+	  //action
+  }
+}
+```
+<img src="images/simple_dialog_2.jpg" width="200" height="400" />
+
+```kotlin
+simpleDialog {
+  title = "Title"
+  content = "Content"
+  yesButton {
+	  //action
+  }
+  noButton {
+  }
+}
+```
+<img src="images/simple_dialog_3.jpg" width="200" height="400" />
 
 #### Simples AlertDialog com ImageVIew
 ```kotlin
-AndroidDialog(this).apply {
+simpleDialog {
   title = "Title"
   content = "Content"
   setImage(R.drawable.dialog_image)
@@ -100,7 +139,7 @@ AndroidDialog(this).apply {
 
 #### Simples AlertDialog com GIF
 ```kotlin
-AndroidDialog(this).apply {
+simpleDialog {
   title = "Title"
   content = "Content"
   setImage(R.drawable.delete)
@@ -108,11 +147,11 @@ AndroidDialog(this).apply {
   noButton { toast("NO") }
 }
 ```
-<img src="images/sabadi_alert_dialog.gif" width="200" height="400" />
+<img src="images/gif_dialog_1.gif" width="200" height="400" />
 
 #### Simples AlertDialog Custom1
 ```kotlin
-AndroidDialog(this).apply {
+simpleDialog {
   setTitleStyle(
 	  title = "Title",
 	  italic = true,
@@ -130,7 +169,7 @@ AndroidDialog(this).apply {
 
 #### Simples AlertDialog Custom2
 ```kotlin
-AndroidDialog(this).apply {
+simpleDialog {
   title = "Title"
   content = "Content"
   setImage(R.drawable.delete)
@@ -142,7 +181,7 @@ AndroidDialog(this).apply {
 
 #### Simples AlertDialog Custom3
 ```kotlin
-AndroidDialog(this).apply {
+simpleDialog {
   title = "Title"
   setContentStyle(
 	  content = "Content",
@@ -157,5 +196,56 @@ AndroidDialog(this).apply {
 ```
 <img src="images/custom_3.jpg" width="200" height="400" />
 
+#### Simples MultiItemDialog
 
+````kotlin
+val itens = mutableListOf(  
+  "Item 0",  
+  "Item 1"  
+)  
+multItemDialog(itens){  
+  onItemClickListener { value, position ->  
+  toast("value: $value / position: $position")  
+ }}
+````
 
+<img src="images/custom_multi_1.jpg" width="200" height="400" />
+
+#### Simples MultiItemDialog com ícones
+
+````kotlin
+val itens = mutableListOf(  
+  "Item 0",  
+  "Item 1"  
+)  
+val icons = mutableListOf(  
+  R.drawable.run,  
+  R.drawable.walk  
+)
+multItemDialog(itens, icons){  
+  onItemClickListener { value, position ->  
+  toast("value: $value / position: $position")  
+ }}
+````
+
+<img src="images/custom_multi_2.jpg" width="200" height="400" />
+
+#### Simples MultiItemDialog com ícones e Imagem
+
+````kotlin
+val itens = mutableListOf(  
+  "Item 0",  
+  "Item 1"  
+)  
+val icons = mutableListOf(  
+  R.drawable.run,  
+  R.drawable.walk  
+)
+multItemDialog(itens, icons){  
+  setImage(R.drawable.dialog_image)
+  onItemClickListener { value, position ->  
+  toast("value: $value / position: $position")  
+ }}
+````
+
+<img src="images/custom_multi_3.jpg" width="200" height="400" />
