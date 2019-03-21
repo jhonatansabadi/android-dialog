@@ -245,7 +245,7 @@ multItemDialog(itens, icons){
   setImage(R.drawable.dialog_image)
   onItemClickListener { value, position ->  
   toast("value: $value / position: $position")  
- }}
+ }
 ````
 
 <img src="images/custom_multi_3.jpg" width="200" height="400" />
