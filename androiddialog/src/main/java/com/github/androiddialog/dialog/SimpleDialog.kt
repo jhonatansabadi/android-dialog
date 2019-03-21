@@ -12,42 +12,57 @@ import androidx.core.graphics.toColorInt
 import com.bumptech.glide.Glide
 import com.github.androiddialog.R
 import kotlinx.android.synthetic.main.android_dialog.view.*
+import kotlinx.android.synthetic.main.simple_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
 
-class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
-    private var customView: View
-    private var dialog: AlertDialog
+class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
+    private lateinit var customView: View
+    private lateinit var dialog: AlertDialog
 
     init {
-        //init
-        customView = activity.layoutInflater.inflate(R.layout.android_dialog, null)
-
-        this.setView(customView)
-        dialog = this.create().apply {
-            show()
-            window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
+        setCustomView()
+        setDialog()
     }
 
-    var title: String
+    private fun setCustomView() {
+        customView = activity.layoutInflater.inflate(
+            R.layout.simple_dialog,
+            null
+        )
+        this.setView(customView)
+    }
+
+    private fun setDialog() {
+        dialog = this
+            .create()
+            .apply {
+                show()
+                window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            }
+    }
+
+    open var title: String
         get() = AnkoInternals.noGetter()
         set(value) {
             customView.titleDialog.text = value
         }
 
     fun setTitleStyle(
-        title: String = customView.titleDialog.text.toString(),
+        title: String = activity.getString(R.string.title_dialog),
         italic: Boolean = false,
-        size: Int= customView.titleDialog.textSize.toInt(),
+        size: Int = customView.titleDialog.textSize.toInt(),
         color: Int = R.color.black
     ) {
-
         customView.titleDialog.apply {
-            if(this.text.toString().isNotEmpty()) this.text = title
-            if (italic) this.setTypeface(this.typeface, Typeface.ITALIC)
-            this.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
-            this.setTextColor(activity.getColor(color))
+            if (text.toString().isNotEmpty()) {
+                text = title
+            }
+            if (italic) {
+                setTypeface(typeface, Typeface.ITALIC)
+            }
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+            setTextColor(activity.getColor(color))
         }
     }
 
@@ -57,7 +72,7 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
             customView.titleDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
-    var titleColor = "#000000".toColorInt()
+    var titleColor = activity.getColor(R.color.black)
         set(value) {
             customView.titleDialog.textColor = activity.getColor(value)
         }
@@ -74,7 +89,7 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
             customView.contentDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
-    var contentColor = "#000000".toColorInt()
+    var contentColor = activity.getColor(R.color.black)
         set(value) {
             customView.contentDialog.textColor = value
         }
@@ -87,10 +102,14 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
     ) {
 
         customView.contentDialog.apply {
-            if(this.text.toString().isNotEmpty()) this.text = content
-            if (italic) this.setTypeface(this.typeface, Typeface.ITALIC)
-            this.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
-            this.setTextColor(activity.getColor(color))
+            if (text.toString().isNotEmpty()) {
+                text = content
+            }
+            if (italic) {
+                setTypeface(typeface, Typeface.ITALIC)
+            }
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+            setTextColor(activity.getColor(color))
         }
     }
 
@@ -127,7 +146,8 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
             .into(customView.imageDialog)
     }
 
-    fun yesButton(title: String = "Yes", callback: (dialog: AlertDialog) -> Unit) {
+    fun yesButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {
+        showYesNoButton()
         customView.yesButtonDialog.text = title.toUpperCase()
         customView.yesButtonDialog.setOnClickListener {
             callback(dialog)
@@ -135,11 +155,30 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
     }
 
 
-    fun noButton(title: String = "No", callback: (dialog: AlertDialog) -> Unit) {
+    fun noButton(title: String = "NO", callback: (dialog: AlertDialog) -> Unit) {
+        showYesNoButton()
         customView.noButtonDialog.text = title.toUpperCase()
         customView.noButtonDialog.setOnClickListener {
             callback(dialog)
         }
+    }
+
+    fun okButton(callback: (dialog: AlertDialog) -> Unit) {
+        showOnlyOkButton()
+        customView.okButtonDialog.setOnClickListener {
+            callback(dialog)
+        }
+    }
+
+    private fun showYesNoButton(){
+        customView.noButtonDialog.visibility = View.VISIBLE
+        customView.yesButtonDialog.visibility = View.VISIBLE
+    }
+
+    private fun showOnlyOkButton() {
+        customView.noButtonDialog.visibility = View.GONE
+        customView.yesButtonDialog.visibility = View.GONE
+        customView.okButtonDialog.visibility = View.VISIBLE
     }
 
     var yesButtonTextColor = R.color.black
@@ -159,4 +198,8 @@ class AndroidDialog(val activity: Activity): AlertDialog.Builder(activity){
                 customView.imageDialog.visibility = View.VISIBLE
             }
         }
+}
+
+fun Activity.simpleDialog(init: SimpleDialog.() -> Unit) {
+    SimpleDialog(this).apply(init)
 }

@@ -145,6 +145,7 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
     }
 
     fun yesButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {
+        showYesNoButton()
         customView.yesButtonDialog.text = title.toUpperCase()
         customView.yesButtonDialog.setOnClickListener {
             callback(dialog)
@@ -153,6 +154,7 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
 
 
     fun noButton(title: String = "NO", callback: (dialog: AlertDialog) -> Unit) {
+        showYesNoButton()
         customView.noButtonDialog.text = title.toUpperCase()
         customView.noButtonDialog.setOnClickListener {
             callback(dialog)
@@ -164,6 +166,11 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
         customView.okButtonDialog.setOnClickListener {
             callback(dialog)
         }
+    }
+
+    private fun showYesNoButton(){
+        customView.noButtonDialog.visibility = View.VISIBLE
+        customView.yesButtonDialog.visibility = View.VISIBLE
     }
 
     private fun showOnlyOkButton() {
