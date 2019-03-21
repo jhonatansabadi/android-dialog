@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         simpleDialog {
             title = "Title"
             content = "Content"
+            okButton {  }
         }
     }
 
@@ -96,10 +97,8 @@ class MainActivity : AppCompatActivity() {
             R.drawable.run,
             R.drawable.walk
         )
-        multItemDialog(itens, icons){
-            title = "Itens"
-            titleColor = R.color.red
-            setImage(R.drawable.delete)
+        multItemDialog(itens){
+            setImage(R.drawable.person)
             onItemClickListener { value, position ->
                 toast("value: $value / position: $position")
             }

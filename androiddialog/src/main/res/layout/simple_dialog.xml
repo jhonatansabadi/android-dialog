@@ -25,6 +25,10 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -42,9 +46,6 @@
                     android:id="@+id/titleDialog"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="16dp"
                     android:text="@string/title_dialog"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -57,15 +58,13 @@
                     android:id="@+id/contentDialog"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
                     android:text="@string/content_dialog"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/titleDialog"
                     app:layout_constraintTop_toBottomOf="@+id/titleDialog"
-                    app:layout_constraintBottom_toTopOf="@+id/noButtonDialog" android:layout_marginBottom="16dp"/>
+                    android:layout_marginTop="16dp"/>
 
             <TextView
                     android:padding="16dp"
@@ -80,14 +79,13 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/contentDialog"
-                    android:layout_marginBottom="8dp" android:visibility="gone"/>
+                    android:visibility="gone"/>
 
             <TextView
                     android:padding="16dp"
                     android:id="@+id/okButtonDialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
                     android:text="@string/ok_button_dialog"
                     android:textColor="@color/black"
@@ -97,7 +95,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/contentDialog"
-                    android:layout_marginBottom="8dp"/>
+            />
 
             <TextView
                     android:padding="16dp"
