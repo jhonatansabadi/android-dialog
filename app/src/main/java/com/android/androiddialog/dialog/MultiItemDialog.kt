@@ -26,19 +26,18 @@ class MultiItemDialog(
     val icons: MutableList<Int>? = null
 ) : AlertDialog.Builder(activity), OnRecyclerClickListener {
 
-    private var customView: View
+    private lateinit var customView: View
     private lateinit var dialog: AlertDialog
     private val builder = this
     private var onItemClick: OnItemClickListener? = null
 
     init {
-        customView = activity.layoutInflater.inflate(R.layout.multi_item_dialog, null)
-        builder.setView(customView)
+        setCustomView()
         initRecyclerView()
-        onSetDialog()
+        setDialog()
     }
 
-    fun onItemClickListener(callback: (value: String, position: Int) -> Unit ){
+    fun onItemClickListener(callback: (value: String, position: Int) -> Unit) {
         setOnItemClickListener(object : OnItemClickListener {
             override fun setOnItemClick(value: String, position: Int) {
                 dialog.dismiss()
@@ -55,17 +54,30 @@ class MultiItemDialog(
         onItemClick?.setOnItemClick(itens[position], position)
     }
 
-    private fun onSetDialog() {
-        dialog = builder.create()
-        dialog.show()
-        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    private fun setCustomView() {
+        customView = activity.layoutInflater.inflate(
+            R.layout.multi_item_dialog,
+            null
+        )
+        this.setView(customView)
+    }
+
+    private fun setDialog() {
+        dialog = this
+            .create()
+            .apply {
+                show()
+                window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            }
     }
 
     private fun initRecyclerView() {
-        customView.recyclerViewDialog.layoutManager = LinearLayoutManager(activity)
-        customView.recyclerViewDialog.adapter = MultiItemAdapter(activity, itens, icons,this)
-        customView.recyclerViewDialog.hasFixedSize()
-        customView.recyclerViewDialog.isNestedScrollingEnabled = true
+        customView.recyclerViewDialog.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = MultiItemAdapter(activity, itens, icons, this@MultiItemDialog)
+            hasFixedSize()
+            isNestedScrollingEnabled = true
+        }
     }
 
     var title: String
@@ -83,10 +95,14 @@ class MultiItemDialog(
     ) {
         showTitle = true
         customView.titleDialog.apply {
-            if (this.text.toString().isNotEmpty()) this.text = title
-            if (italic) this.setTypeface(this.typeface, Typeface.ITALIC)
-            this.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
-            this.setTextColor(activity.getColor(color))
+            if (text.toString().isNotEmpty()) {
+                text = title
+            }
+            if (italic) {
+                setTypeface(typeface, Typeface.ITALIC)
+            }
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+            setTextColor(activity.getColor(color))
         }
     }
 
@@ -150,5 +166,12 @@ class MultiItemDialog(
                 customView.titleDialog.visibility = View.VISIBLE
             }
         }
+}
 
+fun Activity.multItemDialog(
+    itens: MutableList<String>,
+    icons: MutableList<Int>? = null,
+    init: (MultiItemDialog.() -> Unit)
+) {
+    MultiItemDialog(this, itens, icons).apply(init)
 }

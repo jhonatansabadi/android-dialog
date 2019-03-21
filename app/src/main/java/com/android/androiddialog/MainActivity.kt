@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.android.androiddialog.dialog.SimpleDialog
 import com.android.androiddialog.dialog.MultiItemDialog
+import com.android.androiddialog.dialog.multItemDialog
 import com.android.androiddialog.dialog.simpleDialog
 import org.jetbrains.anko.toast
 
@@ -24,16 +25,10 @@ class MainActivity : AppCompatActivity() {
                 it.dismiss()
             }
         }
-//        SimpleDialog(this).apply {
-//            title = "Title"
-//            content = "Content"
-//            yesButton { toast("YES") }
-//            noButton { toast("NO") }
-//        }
     }
 
     fun imageViewDialog(view: View) {
-        SimpleDialog(this).apply {
+        simpleDialog{
             title = "Title"
             content = "Content"
             setImage(R.drawable.person)
@@ -43,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun gifDialog(view: View) {
-        SimpleDialog(this).apply {
+        simpleDialog{
             title = "Title"
             content = "Content"
             setImage(R.drawable.delete)
@@ -53,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom1Dialog(view: View) {
-        SimpleDialog(this).apply {
+        simpleDialog{
             title = "Title"
             titleColor = R.color.red
             titleFontSize = 28
@@ -65,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom2Dialog(view: View) {
-        SimpleDialog(this).apply {
+        simpleDialog{
             setTitleStyle(
                 title = "Title",
                 italic = true,
@@ -81,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom3Dialog(view: View) {
-        SimpleDialog(this).apply {
+        simpleDialog{
             title = "Title"
             setContentStyle(
                 content = "Content",
@@ -104,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             R.drawable.run,
             R.drawable.walk
         )
-        MultiItemDialog(this, itens, icons).apply {
+        multItemDialog(itens, icons){
             title = "Itens"
             titleColor = R.color.red
             onItemClickListener { value, position ->

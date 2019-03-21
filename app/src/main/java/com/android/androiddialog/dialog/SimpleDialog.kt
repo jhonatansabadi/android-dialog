@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
-import androidx.core.graphics.toColorInt
 import com.android.androiddialog.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.simple_dialog.view.*
@@ -88,7 +87,7 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
             customView.contentDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
-    var contentColor = "#000000".toColorInt()
+    var contentColor = activity.getColor(R.color.black)
         set(value) {
             customView.contentDialog.textColor = value
         }
@@ -101,7 +100,7 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
     ) {
 
         customView.contentDialog.apply {
-            if (text.toString().isNotEmpty()){
+            if (text.toString().isNotEmpty()) {
                 text = content
             }
             if (italic) {
@@ -160,14 +159,14 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
         }
     }
 
-    fun okButton(callback: (dialog: AlertDialog) -> Unit){
+    fun okButton(callback: (dialog: AlertDialog) -> Unit) {
         showOnlyOkButton()
         customView.okButtonDialog.setOnClickListener {
             callback(dialog)
         }
     }
 
-    private fun showOnlyOkButton(){
+    private fun showOnlyOkButton() {
         customView.noButtonDialog.visibility = View.GONE
         customView.yesButtonDialog.visibility = View.GONE
         customView.okButtonDialog.visibility = View.VISIBLE
