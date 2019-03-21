@@ -101,10 +101,14 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
     ) {
 
         customView.contentDialog.apply {
-            if (this.text.toString().isNotEmpty()) this.text = content
-            if (italic) this.setTypeface(this.typeface, Typeface.ITALIC)
-            this.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
-            this.setTextColor(activity.getColor(color))
+            if (text.toString().isNotEmpty()){
+                text = content
+            }
+            if (italic) {
+                setTypeface(typeface, Typeface.ITALIC)
+            }
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+            setTextColor(activity.getColor(color))
         }
     }
 
@@ -141,7 +145,7 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
             .into(customView.imageDialog)
     }
 
-    fun yesButton(title: String = "Yes", callback: (dialog: AlertDialog) -> Unit) {
+    fun yesButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {
         customView.yesButtonDialog.text = title.toUpperCase()
         customView.yesButtonDialog.setOnClickListener {
             callback(dialog)
@@ -149,11 +153,24 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
     }
 
 
-    fun noButton(title: String = "No", callback: (dialog: AlertDialog) -> Unit) {
+    fun noButton(title: String = "NO", callback: (dialog: AlertDialog) -> Unit) {
         customView.noButtonDialog.text = title.toUpperCase()
         customView.noButtonDialog.setOnClickListener {
             callback(dialog)
         }
+    }
+
+    fun okButton(callback: (dialog: AlertDialog) -> Unit){
+        showOnlyOkButton()
+        customView.okButtonDialog.setOnClickListener {
+            callback(dialog)
+        }
+    }
+
+    private fun showOnlyOkButton(){
+        customView.noButtonDialog.visibility = View.GONE
+        customView.yesButtonDialog.visibility = View.GONE
+        customView.okButtonDialog.visibility = View.VISIBLE
     }
 
     var yesButtonTextColor = R.color.black

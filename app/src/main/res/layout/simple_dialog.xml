@@ -79,7 +79,25 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/contentDialog" android:layout_marginBottom="8dp"/>
+                    app:layout_constraintTop_toBottomOf="@+id/contentDialog"
+                    android:layout_marginBottom="8dp"/>
+
+            <TextView
+                    android:padding="16dp"
+                    android:id="@+id/okButtonDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ok_button_dialog"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contentDialog"
+                    android:layout_marginBottom="8dp"/>
 
             <TextView
                     android:padding="16dp"

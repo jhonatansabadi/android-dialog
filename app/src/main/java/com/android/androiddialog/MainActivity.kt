@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         simpleDialog {
             title = "Jhonatan"
             content = "Sabadi"
+            okButton {
+                it.dismiss()
+            }
         }
 //        SimpleDialog(this).apply {
 //            title = "Title"
