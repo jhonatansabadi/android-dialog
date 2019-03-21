@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.android.androiddialog.dialog.SimpleDialog
 import com.android.androiddialog.dialog.MultiItemDialog
+import com.android.androiddialog.dialog.simpleDialog
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -16,19 +17,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun simpleDialog(view: View) {
-        SimpleDialog(this).apply {
-            title = "Title"
-            content = "Content"
-            yesButton { toast("YES") }
-            noButton { toast("NO") }
+        simpleDialog {
+            title = "Jhonatan"
+            content = "Sabadi"
         }
+//        SimpleDialog(this).apply {
+//            title = "Title"
+//            content = "Content"
+//            yesButton { toast("YES") }
+//            noButton { toast("NO") }
+//        }
     }
 
     fun imageViewDialog(view: View) {
         SimpleDialog(this).apply {
             title = "Title"
             content = "Content"
-            setImage(R.drawable.dialog_image)
+            setImage(R.drawable.person)
             yesButton { toast("YES") }
             noButton { toast("NO") }
         }
@@ -50,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             titleColor = R.color.red
             titleFontSize = 28
             content = "Content"
-            setImage(R.drawable.dialog_image)
+            setImage(R.drawable.person)
             yesButton { toast("YES") }
             noButton { toast("NO") }
         }
@@ -65,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 size = 22
             )
             content = "Content"
-            setImage(R.drawable.dialog_image)
+            setImage(R.drawable.person)
             yesButton { toast("YES") }
             yesButtonTextColor = R.color.yellow
             noButton { toast("NO") }
