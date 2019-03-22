@@ -21,7 +21,7 @@ repositories {
 Adicione a dependência no arquivo  `build.gradle(Module: app)`
 ```kotlin
 dependencies {
-  implementation 'com.github.jhonatansabadi:android-dialog:1.2.0'
+  implementation 'com.github.jhonatansabadi:android-dialog:1.2.1'
 }
 ```
 
