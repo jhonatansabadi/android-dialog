@@ -11,7 +11,6 @@ import android.view.View
 import androidx.core.graphics.toColorInt
 import com.bumptech.glide.Glide
 import com.github.androiddialog.R
-import kotlinx.android.synthetic.main.android_dialog.view.*
 import kotlinx.android.synthetic.main.simple_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
