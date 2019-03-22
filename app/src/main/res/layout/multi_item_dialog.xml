@@ -50,12 +50,11 @@
                     android:visibility="gone"/>
 
             <androidx.core.widget.NestedScrollView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp">
+                    app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
