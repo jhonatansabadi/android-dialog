@@ -3,7 +3,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
@@ -12,8 +13,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:background="@drawable/delete"
             android:gravity="center_horizontal"
             android:orientation="vertical"
@@ -22,7 +21,8 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
         <LinearLayout
                 android:background="#ffffff"
                 android:layout_width="match_parent"
@@ -50,12 +50,11 @@
                     android:visibility="gone"/>
 
             <androidx.core.widget.NestedScrollView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp">
+                    app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"

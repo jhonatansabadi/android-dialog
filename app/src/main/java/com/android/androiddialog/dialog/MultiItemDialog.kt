@@ -168,7 +168,7 @@ class MultiItemDialog(
         }
 }
 
-fun Activity.multItemDialog(
+fun Activity.multiItemDialog(
     itens: MutableList<String>,
     icons: MutableList<Int>? = null,
     init: (MultiItemDialog.() -> Unit)

@@ -3,9 +3,7 @@ package com.android.androiddialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.android.androiddialog.dialog.SimpleDialog
-import com.android.androiddialog.dialog.MultiItemDialog
-import com.android.androiddialog.dialog.multItemDialog
+import com.android.androiddialog.dialog.multiItemDialog
 import com.android.androiddialog.dialog.simpleDialog
 import org.jetbrains.anko.toast
 
@@ -89,15 +87,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom4Dialog(view: View) {
-        val itens = mutableListOf(
-            "Item 0",
-            "Item 1"
-        )
+        val itens = mutableListOf<String>()
+        for(i in 0..20){
+            itens.add("Item $i")
+        }
         val icons = mutableListOf(
             R.drawable.run,
             R.drawable.walk
         )
-        multItemDialog(itens){
+        multiItemDialog(itens){
             setImage(R.drawable.person)
             onItemClickListener { value, position ->
                 toast("value: $value / position: $position")
