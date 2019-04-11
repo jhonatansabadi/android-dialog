@@ -38,6 +38,7 @@ class ColorPickerDialog(
         initRecyclerView()
         setDialog()
         onColorClickListener()
+        cancelButton()
     }
 
     private fun initColorChecked() {
@@ -185,6 +186,12 @@ class ColorPickerDialog(
         customView.okButtonColorPicker.setOnClickListener {
             dialog.dismiss()
             callback(selectedColor, selectedPosition)
+        }
+    }
+
+    fun cancelButton(callback: ((color: Int, position: Int) -> Unit)? = null) {
+        customView.cancelButtonColorPicker.setOnClickListener {
+            dialog.dismiss()
         }
     }
 }
