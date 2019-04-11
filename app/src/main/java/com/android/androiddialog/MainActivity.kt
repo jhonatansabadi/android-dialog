@@ -117,10 +117,9 @@ class MainActivity : AppCompatActivity() {
         }
         colorPickerDialog(colors) {
             setImage(R.drawable.paint)
-            onColorClickListener { color, position ->
+            okButton { color, position ->
                 button8.setBackgroundColor(color)
             }
-
         }
     }
 

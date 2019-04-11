@@ -70,12 +70,14 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content">
 				<Button
+						android:id="@+id/cancelButtonColorPicker"
 						android:background="@android:color/transparent"
 						android:layout_gravity="right"
 						android:text="cancelar"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"/>
 				<Button
+						android:id="@+id/okButtonColorPicker"
 						android:textColor="@color/blue"
 						android:background="@android:color/transparent"
 						android:layout_gravity="right"

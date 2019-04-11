@@ -16,8 +16,7 @@ import com.android.androiddialog.interfaces.OnColorItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import com.android.androiddialog.model.CheckedColor
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.multi_item_dialog.view.*
-import kotlinx.android.synthetic.main.recycler_color_picker.view.*
+import kotlinx.android.synthetic.main.color_picker_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
 
@@ -30,12 +29,15 @@ class ColorPickerDialog(
     private lateinit var customView: View
     private lateinit var dialog: AlertDialog
     private var onColorClick: OnColorItemClickListener? = null
+    private var selectedColor = -1
+    private var selectedPosition = -1
 
     init {
         initColorChecked()
         setCustomView()
         initRecyclerView()
         setDialog()
+        onColorClickListener()
     }
 
     private fun initColorChecked() {
@@ -75,13 +77,15 @@ class ColorPickerDialog(
         onColorClick?.setOnColorItemClick(view, colors[position], position)
     }
 
-    fun onColorClickListener(callback: (color: Int, position: Int) -> Unit) {
+    fun onColorClickListener(callback: ((color: Int, position: Int) -> Unit)? = null) {
         setOnColorClickListener(object : OnColorItemClickListener {
             override fun setOnColorItemClick(view: View, color: Int, position: Int) {
                 initColorChecked()
                 checkedColors[position].checked = true
                 initRecyclerView()
-                callback(color, position)
+                selectedColor = color
+                selectedPosition = position
+                callback?.invoke(color, position)
             }
         })
     }
@@ -176,6 +180,13 @@ class ColorPickerDialog(
                 customView.titleDialog.visibility = View.VISIBLE
             }
         }
+
+    fun okButton(title: String = "ok", callback: (color: Int, position: Int) -> Unit) {
+        customView.okButtonColorPicker.setOnClickListener {
+            dialog.dismiss()
+            callback(selectedColor, selectedPosition)
+        }
+    }
 }
 
 fun Activity.colorPickerDialog(
