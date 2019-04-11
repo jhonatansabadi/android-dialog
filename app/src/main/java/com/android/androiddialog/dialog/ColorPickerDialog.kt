@@ -9,15 +9,15 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
 import androidx.core.graphics.toColorInt
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.androiddialog.R
 import com.android.androiddialog.adapter.ColorPickerAdapter
 import com.android.androiddialog.interfaces.OnColorItemClickListener
-import com.android.androiddialog.interfaces.OnItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
+import com.android.androiddialog.model.CheckedColor
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.multi_item_dialog.view.*
+import kotlinx.android.synthetic.main.recycler_color_picker.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
 
@@ -26,17 +26,24 @@ class ColorPickerDialog(
     val colors: MutableList<Int>
 ) : AlertDialog.Builder(activity), OnRecyclerClickListener {
 
-
+    private var checkedColors = mutableListOf<CheckedColor>()
     private lateinit var customView: View
     private lateinit var dialog: AlertDialog
     private var onColorClick: OnColorItemClickListener? = null
 
     init {
+        initColorChecked()
         setCustomView()
         initRecyclerView()
         setDialog()
     }
 
+    private fun initColorChecked() {
+        checkedColors.clear()
+        colors.forEach {
+            checkedColors.add(CheckedColor(color = it))
+        }
+    }
 
     private fun setCustomView() {
         customView = activity.layoutInflater.inflate(
@@ -58,27 +65,29 @@ class ColorPickerDialog(
     private fun initRecyclerView() {
         customView.recyclerViewDialog.apply {
             layoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
-            adapter = ColorPickerAdapter(activity, colors, this@ColorPickerDialog)
+            adapter = ColorPickerAdapter(activity, checkedColors, this@ColorPickerDialog)
             hasFixedSize()
             isNestedScrollingEnabled = true
         }
     }
 
     override fun setOnRecyclerClick(view: View, position: Int) {
-        onColorClick?.setOnColorItemClick(colors[position], position)
+        onColorClick?.setOnColorItemClick(view, colors[position], position)
     }
 
     fun onColorClickListener(callback: (color: Int, position: Int) -> Unit) {
         setOnColorClickListener(object : OnColorItemClickListener {
-            override fun setOnColorItemClick(color: Int, position: Int) {
-                dialog.dismiss()
+            override fun setOnColorItemClick(view: View, color: Int, position: Int) {
+                initColorChecked()
+                checkedColors[position].checked = true
+                initRecyclerView()
                 callback(color, position)
             }
         })
     }
 
     private fun setOnColorClickListener(onColorClick: OnColorItemClickListener) {
-        this.onColorClick= onColorClick
+        this.onColorClick = onColorClick
     }
 
     var title: String

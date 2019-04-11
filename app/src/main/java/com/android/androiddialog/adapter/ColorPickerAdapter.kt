@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.androiddialog.R
 import com.android.androiddialog.interfaces.OnColorItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
+import com.android.androiddialog.model.CheckedColor
 import kotlinx.android.synthetic.main.recycler_color_picker.view.*
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.backgroundDrawable
@@ -16,7 +17,7 @@ import java.lang.Exception
 
 class ColorPickerAdapter(
     val context: Context,
-    val colors: MutableList<Int>,
+    val colors: MutableList<CheckedColor>,
     val onRecyclerClickListener: OnRecyclerClickListener
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorPickerViewHolder>() {
 
@@ -45,17 +46,30 @@ class ColorPickerAdapter(
     }
 
     class ColorPickerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(color: Int) {
+        fun bind(checkedColor: CheckedColor) {
             var c: Int
             try {
-                c = itemView.context.getColor(color)
+                c = itemView.context.getColor(checkedColor.color)
             } catch (e: Exception) {
-                c = color
+                c = checkedColor.color
             }
+            c.setRoundedIcon()
+            checkedColor.setCheckedIcon()
 
+        }
+
+        private fun Int.setRoundedIcon() {
             val drawable = itemView.context.getDrawable(R.drawable.color_round)
-            drawable.setTint(c)
+            drawable.setTint(this)
             itemView.viewColorRecycler.background = drawable
+        }
+
+        private fun CheckedColor.setCheckedIcon() {
+            when {
+                checked -> {
+                    itemView.viewCheckRecycler.visibility = View.VISIBLE
+                }
+            }
         }
     }
 }
