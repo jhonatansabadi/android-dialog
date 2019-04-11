@@ -1,11 +1,16 @@
 package com.android.androiddialog
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.android.androiddialog.dialog.colorPickerDialog
 import com.android.androiddialog.dialog.multiItemDialog
 import com.android.androiddialog.dialog.simpleDialog
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.simple_dialog.*
 import org.jetbrains.anko.toast
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         simpleDialog {
             title = "Title"
             content = "Content"
-            okButton {  }
+            okButton { }
         }
     }
 
     fun imageViewDialog(view: View) {
-        simpleDialog{
+        simpleDialog {
             title = "Title"
             content = "Content"
             setImage(R.drawable.person)
@@ -34,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun gifDialog(view: View) {
-        simpleDialog{
+        simpleDialog {
             title = "Title"
             content = "Content"
             setImage(R.drawable.delete)
@@ -44,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom1Dialog(view: View) {
-        simpleDialog{
+        simpleDialog {
             title = "Title"
             titleColor = R.color.red
             titleFontSize = 28
@@ -56,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom2Dialog(view: View) {
-        simpleDialog{
+        simpleDialog {
             setTitleStyle(
                 title = "Title",
                 italic = true,
@@ -72,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun custom3Dialog(view: View) {
-        simpleDialog{
+        simpleDialog {
             title = "Title"
             setContentStyle(
                 content = "Content",
@@ -88,18 +93,34 @@ class MainActivity : AppCompatActivity() {
 
     fun custom4Dialog(view: View) {
         val itens = mutableListOf<String>()
-        for(i in 0..20){
+        for (i in 0..20) {
             itens.add("Item $i")
         }
         val icons = mutableListOf(
             R.drawable.run,
             R.drawable.walk
         )
-        multiItemDialog(itens){
+        multiItemDialog(itens) {
             setImage(R.drawable.person)
             onItemClickListener { value, position ->
                 toast("value: $value / position: $position")
             }
+        }
+    }
+
+    fun custom5Dialog(view: View) {
+        val colors = mutableListOf<Int>()
+        val rnd = Random()
+        for (i in 0..9) {
+            val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+            colors.add(color)
+        }
+        colorPickerDialog(colors) {
+            setImage(R.drawable.paint)
+            onColorClickListener { color, position ->
+                button8.setBackgroundColor(color)
+            }
+
         }
     }
 

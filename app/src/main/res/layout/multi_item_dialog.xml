@@ -61,6 +61,7 @@
 						android:layout_height="match_parent"
 						android:id="@+id/recyclerViewDialog"/>
 			</androidx.core.widget.NestedScrollView>
+
 		</LinearLayout>
 	</androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

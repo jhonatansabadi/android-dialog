@@ -10,6 +10,7 @@ import android.util.TypedValue
 import android.view.View
 import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.androiddialog.R
 import com.android.androiddialog.adapter.ColorPickerAdapter
 import com.android.androiddialog.interfaces.OnColorItemClickListener
@@ -28,7 +29,6 @@ class ColorPickerDialog(
 
     private lateinit var customView: View
     private lateinit var dialog: AlertDialog
-    private val builder = this
     private var onColorClick: OnColorItemClickListener? = null
 
     init {
@@ -40,7 +40,7 @@ class ColorPickerDialog(
 
     private fun setCustomView() {
         customView = activity.layoutInflater.inflate(
-            R.layout.multi_item_dialog,
+            R.layout.color_picker_dialog,
             null
         )
         this.setView(customView)
@@ -57,7 +57,7 @@ class ColorPickerDialog(
 
     private fun initRecyclerView() {
         customView.recyclerViewDialog.apply {
-            layoutManager = LinearLayoutManager(activity)
+            layoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
             adapter = ColorPickerAdapter(activity, colors, this@ColorPickerDialog)
             hasFixedSize()
             isNestedScrollingEnabled = true
