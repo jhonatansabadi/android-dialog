@@ -23,63 +23,45 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
                 android:background="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/constraint_multi_choice">
+                android:id="@+id/constraint_multi_choice"
+                android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:visibility="gone"
                     android:id="@+id/imageDialog"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:scaleType="centerCrop"/>
 
-
-            <androidx.core.widget.NestedScrollView
+            <TextView
+                    android:id="@+id/titleDialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/nestedScrollView"
-                    app:layout_constraintTop_toBottomOf="@+id/imageDialog" app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintBottom_toTopOf="@+id/cancelButtonColorPicker">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="normal|bold"
+                    android:visibility="gone"/>
+
+            <androidx.core.widget.NestedScrollView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="1.0">
 
                 <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/recyclerViewDialog"/>
-
             </androidx.core.widget.NestedScrollView>
-            <TextView
-                    android:textSize="12sp"
-                    android:padding="16dp"
-                    android:textStyle="bold"
-                    android:id="@+id/cancelButtonColorPicker"
-                    android:background="@android:color/transparent"
-                    android:layout_gravity="right"
-                    android:text="CANCELAR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" app:layout_constraintEnd_toStartOf="@+id/okButtonColorPicker"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent"/>
-            <TextView
-                    android:padding="16dp"
-                    android:id="@+id/okButtonColorPicker"
-                    android:textColor="@color/blue"
-                    android:background="@android:color/transparent"
-                    android:layout_gravity="right"
-                    android:text="OK"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
