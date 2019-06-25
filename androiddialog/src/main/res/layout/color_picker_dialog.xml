@@ -1,91 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-	<androidx.cardview.widget.CardView
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center_horizontal"
-			android:layout_margin="18dp"
-			android:background="@drawable/delete"
-			android:gravity="center_horizontal"
-			android:orientation="vertical"
-			app:cardCornerRadius="10dp"
-			app:cardPreventCornerOverlap="true"
-			app:cardUseCompatPadding="true"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			android:layout_marginBottom="32dp"
-			app:layout_constraintBottom_toBottomOf="parent">
-		<LinearLayout
-				android:background="#ffffff"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:id="@+id/constraint_multi_choice"
-				android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="18dp"
+            android:background="@drawable/delete"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/constraint_multi_choice">
 
-			<androidx.appcompat.widget.AppCompatImageView
-					android:visibility="gone"
-					android:id="@+id/imageDialog"
-					android:layout_width="match_parent"
-					android:layout_height="150dp"
-					android:scaleType="centerCrop"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:visibility="gone"
+                    android:id="@+id/imageDialog"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-			<TextView
-					android:id="@+id/titleDialog"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="16dp"
-					android:layout_marginTop="24dp"
-					android:layout_marginEnd="16dp"
-					android:textColor="@color/black"
-					android:textSize="20sp"
-					android:textStyle="normal|bold"
-					android:visibility="gone"/>
 
-			<androidx.core.widget.NestedScrollView
-					android:layout_marginTop="16dp"
-					android:layout_marginBottom="8dp"
-					android:layout_marginRight="8dp"
-					android:layout_marginLeft="8dp"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					app:layout_constraintEnd_toEndOf="parent">
+            <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/nestedScrollView"
+                    app:layout_constraintTop_toBottomOf="@+id/imageDialog" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintBottom_toTopOf="@+id/cancelButtonColorPicker">
 
-				<androidx.recyclerview.widget.RecyclerView
-						android:layout_width="match_parent"
-						android:layout_height="match_parent"
-						android:id="@+id/recyclerViewDialog"/>
-			</androidx.core.widget.NestedScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/recyclerViewDialog"/>
 
-			<LinearLayout
-					android:layout_gravity="right"
-					android:orientation="horizontal"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content">
-				<Button
-						android:id="@+id/cancelButtonColorPicker"
-						android:background="@android:color/transparent"
-						android:layout_gravity="right"
-						android:text="cancelar"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"/>
-				<Button
-						android:id="@+id/okButtonColorPicker"
-						android:textColor="@color/blue"
-						android:background="@android:color/transparent"
-						android:layout_gravity="right"
-						android:text="ok"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"/>
-			</LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+            <TextView
+                    android:textSize="12sp"
+                    android:padding="16dp"
+                    android:textStyle="bold"
+                    android:id="@+id/cancelButtonColorPicker"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="right"
+                    android:text="CANCELAR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:layout_constraintEnd_toStartOf="@+id/okButtonColorPicker"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent"/>
+            <TextView
+                    android:padding="16dp"
+                    android:id="@+id/okButtonColorPicker"
+                    android:textColor="@color/blue"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="right"
+                    android:text="OK"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
 
-		</LinearLayout>
-	</androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
