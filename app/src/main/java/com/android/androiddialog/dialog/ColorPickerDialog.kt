@@ -61,6 +61,7 @@ class ColorPickerDialog(
             .create()
             .apply {
                 show()
+                window.attributes.windowAnimations = R.style.DialogAnimation
                 window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             }
     }

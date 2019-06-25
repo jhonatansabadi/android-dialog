@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
     fun custom5Dialog(view: View) {
         val colors = mutableListOf<Int>()
         val rnd = Random()
-        for (i in 0..9) {
+        for (i in 0..19) {
             val color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
             colors.add(color)
         }
