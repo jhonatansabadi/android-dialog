@@ -95,43 +95,43 @@ class ColorPickerDialog(
     private fun setOnColorClickListener(onColorClick: OnColorItemClickListener) {
         this.onColorClick = onColorClick
     }
-
-    var title: String
-        get() = AnkoInternals.noGetter()
-        set(value) {
-            showTitle = true
-            customView.titleDialog.text = value
-        }
-
-    fun setTitleStyle(
-        title: String = customView.titleDialog.text.toString(),
-        italic: Boolean = false,
-        size: Int = customView.titleDialog.textSize.toInt(),
-        color: Int = R.color.black
-    ) {
-        showTitle = true
-        customView.titleDialog.apply {
-            if (text.toString().isNotEmpty()) {
-                text = title
-            }
-            if (italic) {
-                setTypeface(typeface, Typeface.ITALIC)
-            }
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
-            setTextColor(activity.getColor(color))
-        }
-    }
-
-    var titleFontSize: Int
-        get() = customView.titleDialog.textSize.toInt()
-        set(value) {
-            customView.titleDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
-        }
-
-    var titleColor = "#000000".toColorInt()
-        set(value) {
-            customView.titleDialog.textColor = activity.getColor(value)
-        }
+//
+//    var title: String
+//        get() = AnkoInternals.noGetter()
+//        set(value) {
+//            showTitle = true
+//            customView.titleDialog.text = value
+//        }
+//
+//    fun setTitleStyle(
+//        title: String = customView.titleDialog.text.toString(),
+//        italic: Boolean = false,
+//        size: Int = customView.titleDialog.textSize.toInt(),
+//        color: Int = R.color.black
+//    ) {
+//        showTitle = true
+//        customView.titleDialog.apply {
+//            if (text.toString().isNotEmpty()) {
+//                text = title
+//            }
+//            if (italic) {
+//                setTypeface(typeface, Typeface.ITALIC)
+//            }
+//            setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+//            setTextColor(activity.getColor(color))
+//        }
+//    }
+//
+//    var titleFontSize: Int
+//        get() = customView.titleDialog.textSize.toInt()
+//        set(value) {
+//            customView.titleDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
+//        }
+//
+//    var titleColor = "#000000".toColorInt()
+//        set(value) {
+//            customView.titleDialog.textColor = activity.getColor(value)
+//        }
 
     fun setImage(
         image: Int,
@@ -175,13 +175,13 @@ class ColorPickerDialog(
             }
         }
 
-    private var showTitle: Boolean
-        get() = false
-        set(value) {
-            if (value) {
-                customView.titleDialog.visibility = View.VISIBLE
-            }
-        }
+//    private var showTitle: Boolean
+//        get() = false
+//        set(value) {
+//            if (value) {
+//                customView.titleDialog.visibility = View.VISIBLE
+//            }
+//        }
 
     fun okButton(title: String = "ok", callback: (color: Int, position: Int) -> Unit) {
         customView.okButtonColorPicker.setOnClickListener {
