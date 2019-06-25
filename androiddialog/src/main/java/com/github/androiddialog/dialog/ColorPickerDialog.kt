@@ -9,55 +9,49 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
 import androidx.core.graphics.toColorInt
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-import com.android.androiddialog.adapter.MultiItemAdapter
-import com.android.androiddialog.interfaces.OnItemClickListener
+import com.android.androiddialog.adapter.ColorPickerAdapter
+import com.android.androiddialog.interfaces.OnColorItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
+import com.android.androiddialog.model.CheckedColor
 import com.bumptech.glide.Glide
 import com.github.androiddialog.R
-import kotlinx.android.synthetic.main.multi_item_dialog.view.*
+import kotlinx.android.synthetic.main.color_picker_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
 
-
-class MultiItemDialog(
+class ColorPickerDialog(
     val activity: Activity,
-    val itens: MutableList<String>,
-    val icons: MutableList<Int>? = null
+    val colors: MutableList<Int>
 ) : AlertDialog.Builder(activity), OnRecyclerClickListener {
 
+    private var checkedColors = mutableListOf<CheckedColor>()
     private lateinit var customView: View
     private lateinit var dialog: AlertDialog
-    private val builder = this
-    private var onItemClick: OnItemClickListener? = null
+    private var onColorClick: OnColorItemClickListener? = null
+    private var selectedColor = -1
+    private var selectedPosition = -1
 
     init {
+        initColorChecked()
         setCustomView()
         initRecyclerView()
         setDialog()
+        onColorClickListener()
+        cancelButton()
     }
 
-    fun onItemClickListener(callback: (value: String, position: Int) -> Unit) {
-        setOnItemClickListener(object : OnItemClickListener {
-            override fun setOnItemClick(value: String, position: Int) {
-                dialog.dismiss()
-                callback(value, position)
-            }
-        })
-    }
-
-    private fun setOnItemClickListener(onItemClick: OnItemClickListener) {
-        this.onItemClick = onItemClick
-    }
-
-    override fun setOnRecyclerClick(view: View, position: Int) {
-        onItemClick?.setOnItemClick(itens[position], position)
+    private fun initColorChecked() {
+        checkedColors.clear()
+        colors.forEach {
+            checkedColors.add(CheckedColor(color = it))
+        }
     }
 
     private fun setCustomView() {
         customView = activity.layoutInflater.inflate(
-            R.layout.multi_item_dialog,
+            R.layout.color_picker_dialog,
             null
         )
         this.setView(customView)
@@ -68,17 +62,39 @@ class MultiItemDialog(
             .create()
             .apply {
                 show()
+                window.attributes.windowAnimations = R.style.DialogAnimation
                 window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             }
     }
 
     private fun initRecyclerView() {
         customView.recyclerViewDialog.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = MultiItemAdapter(activity, itens, icons, this@MultiItemDialog)
+            layoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+            adapter = ColorPickerAdapter(activity, checkedColors, this@ColorPickerDialog)
             hasFixedSize()
             isNestedScrollingEnabled = true
         }
+    }
+
+    override fun setOnRecyclerClick(view: View, position: Int) {
+        onColorClick?.setOnColorItemClick(view, colors[position], position)
+    }
+
+    fun onColorClickListener(callback: ((color: Int, position: Int) -> Unit)? = null) {
+        setOnColorClickListener(object : OnColorItemClickListener {
+            override fun setOnColorItemClick(view: View, color: Int, position: Int) {
+                initColorChecked()
+                checkedColors[position].checked = true
+                initRecyclerView()
+                selectedColor = color
+                selectedPosition = position
+                callback?.invoke(color, position)
+            }
+        })
+    }
+
+    private fun setOnColorClickListener(onColorClick: OnColorItemClickListener) {
+        this.onColorClick = onColorClick
     }
 
     var title: String
@@ -167,12 +183,24 @@ class MultiItemDialog(
                 customView.titleDialog.visibility = View.VISIBLE
             }
         }
+
+    fun okButton(title: String = "ok", callback: (color: Int, position: Int) -> Unit) {
+        customView.okButtonColorPicker.setOnClickListener {
+            dialog.dismiss()
+            callback(selectedColor, selectedPosition)
+        }
+    }
+
+    fun cancelButton(callback: ((color: Int, position: Int) -> Unit)? = null) {
+        customView.cancelButtonColorPicker.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
 }
 
-fun Activity.multiItemDialog(
-    itens: MutableList<String>,
-    icons: MutableList<Int>? = null,
-    init: (MultiItemDialog.() -> Unit)
+fun Activity.colorPickerDialog(
+    colors: MutableList<Int>,
+    init: (ColorPickerDialog.() -> Unit)
 ) {
-    MultiItemDialog(this, itens, icons).apply(init)
+    ColorPickerDialog(this, colors).apply(init)
 }

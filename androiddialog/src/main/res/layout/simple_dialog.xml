@@ -25,10 +25,6 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="24dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -43,6 +39,7 @@
                     android:scaleType="centerCrop"/>
 
             <TextView
+                    android:layout_margin="16dp"
                     android:id="@+id/titleDialog"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -55,6 +52,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageDialog"/>
 
             <TextView
+                    android:paddingBottom="16dp"
                     android:id="@+id/contentDialog"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -64,7 +62,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/titleDialog"
                     app:layout_constraintTop_toBottomOf="@+id/titleDialog"
-                    android:layout_marginTop="16dp"/>
+                    android:layout_marginTop="16dp"
+            />
 
             <TextView
                     android:padding="16dp"
