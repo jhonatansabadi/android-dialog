@@ -98,7 +98,6 @@ class ColorPickerDialog(
     }
 
 
-
     fun setImage(
         image: Int,
         height: Int = customView.imageDialog.height,
@@ -151,6 +150,13 @@ class ColorPickerDialog(
     fun cancelButton(callback: ((color: Int, position: Int) -> Unit)? = null) {
         customView.cancelButtonColorPicker.setOnClickListener {
             dialog.dismiss()
+        }
+    }
+
+    fun defaultColorButton(callback: () -> Unit) {
+        customView.defaultColorButtonColorPicker.setOnClickListener {
+            dialog.dismiss()
+            callback()
         }
     }
 }

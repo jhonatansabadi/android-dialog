@@ -40,6 +40,12 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
             }
     }
 
+    var cancelable: Boolean
+        get() = true
+        set(value) {
+            dialog.setCancelable(value)
+        }
+
     open var title: String
         get() = AnkoInternals.noGetter()
         set(value) {

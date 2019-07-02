@@ -40,6 +40,15 @@ class SimpleDialog(val activity: Activity) : AlertDialog.Builder(activity) {
             }
     }
 
+    private fun setDialog() {
+        dialog = this
+            .create()
+            .apply {
+                show()
+                window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            }
+    }
+
     open var title: String
         get() = AnkoInternals.noGetter()
         set(value) {

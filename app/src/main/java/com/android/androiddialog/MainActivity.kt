@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         simpleDialog {
             title = "Title"
             content = "Content"
+            cancelable = false
             setImage(R.drawable.delete)
             yesButton { toast("YES") }
             noButton { toast("NO") }
