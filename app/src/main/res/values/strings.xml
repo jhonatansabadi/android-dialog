@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">AndroidDialog</string>
-    <string name="title_dialog">Title</string>
-    <string name="content_dialog">Content</string>
-    <string name="yes_button_dialog">YES</string>
-    <string name="no_button_dialog">NO</string>
-    <string name="ok_button_dialog">OK</string>
-</resources>
