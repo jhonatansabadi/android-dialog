@@ -1,0 +1,3 @@
+include ':android-dialog'
+include ':app'
+rootProject.name = "Android Dialog Example"
