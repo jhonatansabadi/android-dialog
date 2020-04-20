@@ -1,3 +1,2 @@
-include ':android-dialog'
-include ':app'
+include ':app', ':android-dialog'
 rootProject.name = "Android Dialog Example"

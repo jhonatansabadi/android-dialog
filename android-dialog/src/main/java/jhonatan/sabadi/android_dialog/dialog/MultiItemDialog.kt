@@ -30,7 +30,6 @@ class MultiItemDialog(
 
     private lateinit var customView: View
     private lateinit var dialog: AlertDialog
-    private val builder = this
     private var onItemClick: OnItemClickListener? = null
 
     init {
@@ -61,16 +60,14 @@ class MultiItemDialog(
             R.layout.multi_item_dialog,
             null
         )
-        this.setView(customView)
+        setView(customView)
     }
 
     private fun setDialog() {
-        dialog = this
-            .create()
-            .apply {
-                show()
-                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            }
+        dialog = create().apply {
+            show()
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
     }
 
     private fun initRecyclerView() {
