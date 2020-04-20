@@ -41,13 +41,13 @@ class ColorPickerAdapter(
 
     class ColorPickerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(checkedColor: CheckedColor) {
-            var c: Int
+            var color: Int
             try {
-                c = ContextCompat.getColor(itemView.context, checkedColor.color)
+                color = ContextCompat.getColor(itemView.context, checkedColor.color)
             } catch (e: Exception) {
-                c = checkedColor.color
+                color = checkedColor.color
             }
-            c.setRoundedIcon()
+            color.setRoundedIcon()
             checkedColor.setCheckedIcon()
 
         }
@@ -59,10 +59,8 @@ class ColorPickerAdapter(
         }
 
         private fun CheckedColor.setCheckedIcon() {
-            when {
-                checked -> {
-                    itemView.viewCheckRecycler.visibility = View.VISIBLE
-                }
+            if (checked) {
+                itemView.viewCheckRecycler.visibility = View.VISIBLE
             }
         }
     }

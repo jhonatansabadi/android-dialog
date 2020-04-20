@@ -11,7 +11,6 @@ import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.recycler_multi_item.view.*
 
 class MultiItemAdapter(
-    val context: Context,
     val itens: MutableList<String>,
     val icons: MutableList<Int>?,
     val onRecyclerClickListener: OnRecyclerClickListener
@@ -23,8 +22,7 @@ class MultiItemAdapter(
                 R.layout.recycler_multi_item,
                 parent,
                 false
-            ),
-            context
+            )
         )
         holder.itemView.setOnClickListener {
             onRecyclerClickListener.setOnRecyclerClick(
@@ -41,14 +39,14 @@ class MultiItemAdapter(
         holder.bind(itens[position], icons?.get(position))
     }
 
-    class MultiItemViewHolder(itemView: View, val context: Context) : RecyclerView.ViewHolder(itemView) {
+    class MultiItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: String, icon: Int?) {
             itemView.apply {
                 titleRecyclerDialog.text = item
                 icon?.let {
                     iconRecyclerDialog.visibility = View.VISIBLE
-                    Glide.with(this@MultiItemViewHolder.context)
+                    Glide.with(itemView.context)
                         .load(it)
                         .into(iconRecyclerDialog)
                 }
