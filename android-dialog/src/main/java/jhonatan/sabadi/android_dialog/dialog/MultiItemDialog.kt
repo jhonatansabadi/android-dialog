@@ -76,7 +76,7 @@ class MultiItemDialog(
     private fun initRecyclerView() {
         customView.recyclerViewDialog.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = MultiItemAdapter(activity, itens, icons, this@MultiItemDialog)
+            adapter = MultiItemAdapter(itens, icons, this@MultiItemDialog)
             hasFixedSize()
             isNestedScrollingEnabled = true
         }

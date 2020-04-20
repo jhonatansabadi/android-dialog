@@ -2,15 +2,12 @@ package com.android.androiddialog.dialog
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.androiddialog.adapter.ColorPickerAdapter
 import com.android.androiddialog.interfaces.OnColorItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
-import com.android.androiddialog.model.CheckedColor
 import com.bumptech.glide.Glide
 import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.color_picker_dialog.view.*
@@ -20,15 +17,19 @@ class ColorPickerDialog(
     val colors: MutableList<Int>
 ) : AlertDialog.Builder(activity), OnRecyclerClickListener {
 
-    private var checkedColors = mutableListOf<CheckedColor>()
     private lateinit var customView: View
     private lateinit var dialog: AlertDialog
     private var onColorClick: OnColorItemClickListener? = null
     private var selectedColor = -1
     private var selectedPosition = -1
 
+    private val colorPickerAdapter by lazy {
+        ColorPickerAdapter(this).apply {
+            submitList(colors)
+        }
+    }
+
     init {
-        initColorChecked()
         setCustomView()
         initRecyclerView()
         setDialog()
@@ -36,38 +37,28 @@ class ColorPickerDialog(
         cancelButton()
     }
 
-    private fun initColorChecked() {
-        checkedColors.clear()
-        colors.forEach {
-            checkedColors.add(CheckedColor(color = it))
-        }
-    }
-
     private fun setCustomView() {
         customView = activity.layoutInflater.inflate(
             R.layout.color_picker_dialog,
             null
         )
-        this.setView(customView)
+        setView(customView)
     }
 
     private fun setDialog() {
-        dialog = this
-            .create()
-            .apply {
-                show()
-                window?.attributes?.windowAnimations = R.style.DialogAnimation
-                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            }
+        dialog = create().apply {
+            show()
+        }
     }
 
     private fun initRecyclerView() {
         customView.recyclerViewDialog.apply {
             layoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
-            adapter = ColorPickerAdapter(checkedColors, this@ColorPickerDialog)
+            adapter = colorPickerAdapter
             hasFixedSize()
             isNestedScrollingEnabled = true
         }
+
     }
 
     override fun setOnRecyclerClick(view: View, position: Int) {
@@ -77,9 +68,7 @@ class ColorPickerDialog(
     fun onColorClickListener(callback: ((color: Int, position: Int) -> Unit)? = null) {
         setOnColorClickListener(object : OnColorItemClickListener {
             override fun setOnColorItemClick(view: View, color: Int, position: Int) {
-                initColorChecked()
-                checkedColors[position].checked = true
-                initRecyclerView()
+                colorPickerAdapter.setItemChecked(position)
                 selectedColor = color
                 selectedPosition = position
                 callback?.invoke(color, position)

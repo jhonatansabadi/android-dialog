@@ -11,9 +11,10 @@ import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.recycler_color_picker.view.*
 
 class ColorPickerAdapter(
-    val colors: MutableList<CheckedColor>,
-    val onRecyclerClickListener: OnRecyclerClickListener
+    private val onRecyclerClickListener: OnRecyclerClickListener
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorPickerViewHolder>() {
+
+    private val checkedColors = mutableListOf<CheckedColor>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorPickerViewHolder {
         val holder = ColorPickerViewHolder(
@@ -33,11 +34,35 @@ class ColorPickerAdapter(
         return holder
     }
 
-    override fun getItemCount() = colors.size
+    fun submitList(colors: MutableList<Int>) {
+        checkedColors.clear()
+        colors.forEach {
+            checkedColors.add(CheckedColor(color = it))
+        }
+    }
+
+    fun setItemChecked(position: Int) {
+        clearCheckedItens()
+        checkItem(position)
+        notifyItemChanged(position)
+    }
+
+    private fun checkItem(position: Int) {
+        checkedColors[position].isChecked = true
+    }
+
+    private fun clearCheckedItens() {
+        checkedColors.forEach {
+            it.isChecked = false
+        }
+    }
+
+    override fun getItemCount() = checkedColors.size
 
     override fun onBindViewHolder(holder: ColorPickerViewHolder, position: Int) {
-        holder.bind(colors[position])
+        holder.bind(checkedColors[position])
     }
+
 
     class ColorPickerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(checkedColor: CheckedColor) {
@@ -59,7 +84,7 @@ class ColorPickerAdapter(
         }
 
         private fun CheckedColor.setCheckedIcon() {
-            if (checked) {
+            if (isChecked) {
                 itemView.viewCheckRecycler.visibility = View.VISIBLE
             }
         }
