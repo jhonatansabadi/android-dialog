@@ -53,6 +53,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     tools:listitem="@layout/recycler_color_picker"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="5"
                     android:id="@+id/recyclerViewDialog"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
