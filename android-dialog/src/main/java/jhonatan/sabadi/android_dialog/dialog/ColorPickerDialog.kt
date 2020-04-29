@@ -2,6 +2,8 @@ package com.android.androiddialog.dialog
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -48,6 +50,7 @@ class ColorPickerDialog(
     private fun setDialog() {
         dialog = create().apply {
             show()
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
     }
 

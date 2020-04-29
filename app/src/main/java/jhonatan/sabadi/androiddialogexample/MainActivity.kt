@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            val itens = mutableListOf("Alarm")
-            val icons = mutableListOf(R.drawable.ic_alarm)
-            multiItemDialog(itens, icons) {
+            colorPickerDialog(mutableListOf(R.color.black, R.color.blue)) {
+                okButton { color, position ->
 
+                }
             }
         }
     }
