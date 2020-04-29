@@ -46,9 +46,7 @@ class MultiItemAdapter(
                 titleRecyclerDialog.text = item
                 icon?.let {
                     iconRecyclerDialog.visibility = View.VISIBLE
-                    Glide.with(itemView.context)
-                        .load(it)
-                        .into(iconRecyclerDialog)
+                    iconRecyclerDialog.setImageResource(it)
                 }
             }
         }
