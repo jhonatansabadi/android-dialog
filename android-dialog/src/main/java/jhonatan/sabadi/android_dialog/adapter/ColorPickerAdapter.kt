@@ -11,24 +11,24 @@ import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.recycler_color_picker.view.*
 
 class ColorPickerAdapter(
-    private val onRecyclerClickListener: OnRecyclerClickListener
+        private val onRecyclerClickListener: OnRecyclerClickListener
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorPickerViewHolder>() {
 
     private val checkedColors = mutableListOf<CheckedColor>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorPickerViewHolder {
         val holder = ColorPickerViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(
-                    R.layout.recycler_color_picker,
-                    parent,
-                    false
-                )
+                LayoutInflater.from(parent.context)
+                        .inflate(
+                                R.layout.recycler_color_picker,
+                                parent,
+                                false
+                        )
         )
         holder.itemView.setOnClickListener {
             onRecyclerClickListener.setOnRecyclerClick(
-                holder.itemView,
-                holder.adapterPosition
+                    holder.itemView,
+                    holder.adapterPosition
             )
         }
         return holder
@@ -43,8 +43,8 @@ class ColorPickerAdapter(
 
     fun setItemChecked(position: Int) {
         clearCheckedItens()
+        notifyDataSetChanged()
         checkItem(position)
-        notifyItemChanged(position)
     }
 
     private fun checkItem(position: Int) {
@@ -86,6 +86,8 @@ class ColorPickerAdapter(
         private fun CheckedColor.setCheckedIcon() {
             if (isChecked) {
                 itemView.viewCheckRecycler.visibility = View.VISIBLE
+            } else {
+                itemView.viewCheckRecycler.visibility = View.GONE
             }
         }
     }

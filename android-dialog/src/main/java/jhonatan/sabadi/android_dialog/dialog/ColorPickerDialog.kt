@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.androiddialog.adapter.ColorPickerAdapter
 import com.android.androiddialog.interfaces.OnColorItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
+import com.android.androiddialog.model.CheckedColor
 import com.bumptech.glide.Glide
 import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.color_picker_dialog.view.*
