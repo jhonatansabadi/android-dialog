@@ -15,9 +15,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            lottieDialog("moto.json")  {
+            simpleDialog  {
                 title = "Teste"
                 content = "Test"
+                actionButton("Save") {
+                    Toast.makeText(this@MainActivity, "saved", Toast.LENGTH_SHORT).show()
+                }
+                neutralButton("cancel") {
+                    it.dismiss()
+                }
             }
         }
     }

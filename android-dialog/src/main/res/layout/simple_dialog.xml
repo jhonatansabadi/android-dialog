@@ -25,7 +25,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -39,76 +40,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/titleDialog"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/title_dialog"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
-                android:textStyle="normal|bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageDialog" />
+            <include layout="@layout/base_dialog" />
 
-            <TextView
-                android:id="@+id/contentDialog"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingBottom="16dp"
-                android:text="@string/content_dialog"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/titleDialog"
-                app:layout_constraintStart_toStartOf="@+id/titleDialog"
-                app:layout_constraintTop_toBottomOf="@+id/titleDialog" />
+            <include layout="@layout/base_dialog_actions" />
 
-            <TextView
-                android:id="@+id/noButtonDialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@string/no_button_dialog"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contentDialog" />
-
-            <TextView
-                android:id="@+id/okButtonDialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="@string/ok_button_dialog"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contentDialog" />
-
-            <TextView
-                android:id="@+id/yesButtonDialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:padding="16dp"
-                android:text="@string/yes_button_dialog"
-                android:textColor="?android:attr/colorAccent"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/noButtonDialog"
-                app:layout_constraintEnd_toStartOf="@+id/noButtonDialog"
-                app:layout_constraintTop_toTopOf="@+id/noButtonDialog" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

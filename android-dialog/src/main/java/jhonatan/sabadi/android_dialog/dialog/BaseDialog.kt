@@ -10,13 +10,10 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieDrawable
 import jhonatan.sabadi.android_dialog.R
+import kotlinx.android.synthetic.main.base_dialog.view.*
+import kotlinx.android.synthetic.main.base_dialog_actions.view.*
 import kotlinx.android.synthetic.main.lottie_dialog.view.*
 import kotlinx.android.synthetic.main.simple_dialog.view.*
-import kotlinx.android.synthetic.main.simple_dialog.view.contentDialog
-import kotlinx.android.synthetic.main.simple_dialog.view.noButtonDialog
-import kotlinx.android.synthetic.main.simple_dialog.view.okButtonDialog
-import kotlinx.android.synthetic.main.simple_dialog.view.titleDialog
-import kotlinx.android.synthetic.main.simple_dialog.view.yesButtonDialog
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
 
@@ -135,49 +132,51 @@ open class BaseDialog(
         }
     }
 
-    fun yesButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {
-        showYesNoButton()
-        customView.yesButtonDialog.text = title.toUpperCase()
-        customView.yesButtonDialog.setOnClickListener {
+    fun actionButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {
+        showBothButtons()
+        customView.actionButtonDialog.text = title.toUpperCase()
+        customView.actionButtonDialog.setOnClickListener {
             callback(dialog)
         }
     }
 
 
-    fun noButton(title: String = "NO", callback: (dialog: AlertDialog) -> Unit) {
-        showYesNoButton()
-        customView.noButtonDialog.text = title.toUpperCase()
-        customView.noButtonDialog.setOnClickListener {
+    fun neutralButton(title: String = "NO", callback: (dialog: AlertDialog) -> Unit) {
+        showBothButtons()
+        customView.neutralButtonDialog.text = title.toUpperCase()
+        customView.neutralButtonDialog.setOnClickListener {
             callback(dialog)
         }
     }
 
     fun okButton(callback: (dialog: AlertDialog) -> Unit) {
         showOnlyOkButton()
-        customView.okButtonDialog.setOnClickListener {
-            callback(dialog)
+        customView.okButtonDialog.apply {
+            text = activity.getString(android.R.string.ok)
+            setOnClickListener {
+                callback(dialog)
+            }
         }
     }
 
-    private fun showYesNoButton() {
-        customView.noButtonDialog.visibility = View.VISIBLE
-        customView.yesButtonDialog.visibility = View.VISIBLE
+    private fun showBothButtons() {
+        customView.groupActinButtonDialog.visibility = View.VISIBLE
+        customView.okButtonDialog.visibility = View.GONE
     }
 
     private fun showOnlyOkButton() {
-        customView?.noButtonDialog.visibility = View.GONE
-        customView?.yesButtonDialog.visibility = View.GONE
-        customView?.okButtonDialog.visibility = View.VISIBLE
+        customView.groupActinButtonDialog.visibility = View.GONE
+        customView.okButtonDialog.visibility = View.VISIBLE
     }
 
-    var yesButtonTextColor = R.color.black
+    var actionButtonTextColor = R.color.black
         set(value) {
-            customView.yesButtonDialog.textColor = ContextCompat.getColor(activity, value)
+            customView.actionButtonDialog.textColor = ContextCompat.getColor(activity, value)
         }
 
-    var noButtonTextColor = R.color.black
+    var neutralButtonTextColor = R.color.black
         set(value) {
-            customView.noButtonDialog.textColor = ContextCompat.getColor(activity, value)
+            customView.neutralButtonDialog.textColor = ContextCompat.getColor(activity, value)
         }
 
     private var showImage: Boolean
