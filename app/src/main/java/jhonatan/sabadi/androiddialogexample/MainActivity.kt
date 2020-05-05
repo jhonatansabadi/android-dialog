@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            simpleDialog  {
+            multiItemDialog(mutableListOf("a", "b"))  {
                 title = "Teste"
                 content = "Test"
                 actionButton("Save") {

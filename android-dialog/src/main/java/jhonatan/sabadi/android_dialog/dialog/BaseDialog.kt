@@ -52,7 +52,7 @@ open class BaseDialog(
             dialog.setCancelable(value)
         }
 
-    var title: String
+    open var title: String
         get() = AnkoInternals.noGetter()
         set(value) {
             customView.titleDialog.text = value
@@ -64,7 +64,7 @@ open class BaseDialog(
         size: Int = customView.titleDialog.textSize.toInt(),
         color: Int = R.color.black
     ) {
-        customView.titleDialog.apply {
+        customView.titleDialog?.apply {
             if (text.toString().isNotEmpty()) {
                 text = title
             }
@@ -79,33 +79,33 @@ open class BaseDialog(
     var titleFontSize: Int
         get() = customView.titleDialog.textSize.toInt()
         set(value) {
-            customView.titleDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
+            customView.titleDialog?.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
     var titleColor = ContextCompat.getColor(activity, R.color.black)
         set(value) {
-            customView.titleDialog.textColor = ContextCompat.getColor(activity, value)
+            customView.titleDialog?.textColor = ContextCompat.getColor(activity, value)
         }
 
     var content: String
-        get() = customView.contentDialog.text.toString()
+        get() = customView?.contentDialog?.text.toString()
         set(value) {
-            customView.contentDialog.text = value
+            customView?.contentDialog?.text = value
         }
 
     var contentFontSize: Int
         get() = customView.titleDialog.textSize.toInt()
         set(value) {
-            customView.contentDialog.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
+            customView.contentDialog?.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
     var contentColor = ContextCompat.getColor(activity, R.color.black)
         set(value) {
-            customView.contentDialog.textColor = value
+            customView.contentDialog?.textColor = value
         }
 
     fun setContentStyle(
-        content: String = customView.titleDialog.text.toString(),
+        content: String = customView.titleDialog?.text.toString(),
         italic: Boolean = false,
         size: Int = customView.contentDialog.textSize.toInt(),
         color: Int = R.color.black
@@ -125,7 +125,7 @@ open class BaseDialog(
 
 
     open fun setImage(lottieIMage: String) {
-        customView.lottieImage.apply {
+        customView.lottieImage?.apply {
             setAnimation(lottieIMage)
             repeatCount = LottieDrawable.INFINITE
             playAnimation()
@@ -134,8 +134,8 @@ open class BaseDialog(
 
     fun actionButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
-        customView.actionButtonDialog.text = title.toUpperCase()
-        customView.actionButtonDialog.setOnClickListener {
+        customView.actionButtonDialog?.text = title.toUpperCase()
+        customView.actionButtonDialog?.setOnClickListener {
             callback(dialog)
         }
     }
@@ -143,15 +143,15 @@ open class BaseDialog(
 
     fun neutralButton(title: String = "NO", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
-        customView.neutralButtonDialog.text = title.toUpperCase()
-        customView.neutralButtonDialog.setOnClickListener {
+        customView.neutralButtonDialog?.text = title.toUpperCase()
+        customView.neutralButtonDialog?.setOnClickListener {
             callback(dialog)
         }
     }
 
     fun okButton(callback: (dialog: AlertDialog) -> Unit) {
         showOnlyOkButton()
-        customView.okButtonDialog.apply {
+        customView.okButtonDialog?.apply {
             text = activity.getString(android.R.string.ok)
             setOnClickListener {
                 callback(dialog)
@@ -160,30 +160,30 @@ open class BaseDialog(
     }
 
     private fun showBothButtons() {
-        customView.groupActinButtonDialog.visibility = View.VISIBLE
-        customView.okButtonDialog.visibility = View.GONE
+        customView.groupActinButtonDialog?.visibility = View.VISIBLE
+        customView.okButtonDialog?.visibility = View.GONE
     }
 
     private fun showOnlyOkButton() {
-        customView.groupActinButtonDialog.visibility = View.GONE
-        customView.okButtonDialog.visibility = View.VISIBLE
+        customView.groupActinButtonDialog?.visibility = View.GONE
+        customView.okButtonDialog?.visibility = View.VISIBLE
     }
 
     var actionButtonTextColor = R.color.black
         set(value) {
-            customView.actionButtonDialog.textColor = ContextCompat.getColor(activity, value)
+            customView.actionButtonDialog?.textColor = ContextCompat.getColor(activity, value)
         }
 
     var neutralButtonTextColor = R.color.black
         set(value) {
-            customView.neutralButtonDialog.textColor = ContextCompat.getColor(activity, value)
+            customView.neutralButtonDialog?.textColor = ContextCompat.getColor(activity, value)
         }
 
     private var showImage: Boolean
         get() = false
         set(value) {
             if (value) {
-                customView.imageDialog.visibility = View.VISIBLE
+                customView.imageDialog?.visibility = View.VISIBLE
             }
         }
 }

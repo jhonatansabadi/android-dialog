@@ -1,6 +1,7 @@
 package com.android.androiddialog.dialog
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.androiddialog.adapter.MultiItemAdapter
@@ -21,6 +22,15 @@ class MultiItemDialog(
     init {
         initRecyclerView()
     }
+
+    override var title: String
+        get() = customView.titleDialog.text.toString()
+        set(value) {
+            customView.titleDialog.apply {
+                visibility = View.VISIBLE
+                text = value
+            }
+        }
 
     fun onItemClickListener(callback: (value: String, position: Int) -> Unit) {
         setOnItemClickListener(object : OnItemClickListener {
