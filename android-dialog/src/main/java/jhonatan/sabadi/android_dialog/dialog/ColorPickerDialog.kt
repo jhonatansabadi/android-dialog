@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide
 import jhonatan.sabadi.android_dialog.R
 import jhonatan.sabadi.android_dialog.dialog.BaseDialog
 import kotlinx.android.synthetic.main.color_picker_dialog.view.*
+import kotlinx.android.synthetic.main.color_picker_dialog.view.recyclerViewDialog
+import kotlinx.android.synthetic.main.multi_item_dialog.view.*
 
 class ColorPickerDialog(
     activity: Activity,
@@ -35,6 +37,7 @@ class ColorPickerDialog(
         initRecyclerView()
         onColorClickListener()
     }
+
 
     private fun initRecyclerView() {
         customView.recyclerViewDialog.apply {

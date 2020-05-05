@@ -55,7 +55,7 @@ open class BaseDialog(
     open var title: String
         get() = AnkoInternals.noGetter()
         set(value) {
-            customView.titleDialog.text = value
+            customView.titleDialog?.text = value
         }
 
     fun setTitleStyle(

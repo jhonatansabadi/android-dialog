@@ -1,5 +1,6 @@
 package jhonatan.sabadi.androiddialogexample
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            multiItemDialog(mutableListOf("a", "b"))  {
+            colorPickerDialog(mutableListOf(Color.BLUE, Color.BLACK))  {
                 title = "Teste"
                 content = "Test"
                 actionButton("Save") {
