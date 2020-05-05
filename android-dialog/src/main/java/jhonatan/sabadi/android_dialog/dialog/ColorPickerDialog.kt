@@ -13,15 +13,14 @@ import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import com.android.androiddialog.model.CheckedColor
 import com.bumptech.glide.Glide
 import jhonatan.sabadi.android_dialog.R
+import jhonatan.sabadi.android_dialog.dialog.BaseDialog
 import kotlinx.android.synthetic.main.color_picker_dialog.view.*
 
 class ColorPickerDialog(
-    val activity: Activity,
+    activity: Activity,
     val colors: MutableList<Int>
-) : AlertDialog.Builder(activity), OnRecyclerClickListener {
+) : BaseDialog(activity, R.layout.color_picker_dialog), OnRecyclerClickListener {
 
-    private lateinit var customView: View
-    private lateinit var dialog: AlertDialog
     private var onColorClick: OnColorItemClickListener? = null
     private var selectedColor = -1
     private var selectedPosition = -1
@@ -33,26 +32,8 @@ class ColorPickerDialog(
     }
 
     init {
-        setCustomView()
         initRecyclerView()
-        setDialog()
         onColorClickListener()
-        cancelButton()
-    }
-
-    private fun setCustomView() {
-        customView = activity.layoutInflater.inflate(
-            R.layout.color_picker_dialog,
-            null
-        )
-        setView(customView)
-    }
-
-    private fun setDialog() {
-        dialog = create().apply {
-            show()
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
     }
 
     private fun initRecyclerView() {
@@ -82,69 +63,6 @@ class ColorPickerDialog(
 
     private fun setOnColorClickListener(onColorClick: OnColorItemClickListener) {
         this.onColorClick = onColorClick
-    }
-
-
-    fun setImage(
-        image: Int,
-        height: Int = customView.imageDialog.height,
-        width: Int = customView.imageDialog.width
-    ) {
-        showImage = true
-        Glide.with(activity)
-            .load(image)
-            .into(customView.imageDialog)
-    }
-
-    fun setImage(
-        imageUrl: String,
-        height: Int = customView.imageDialog.height,
-        width: Int = customView.imageDialog.width
-    ) {
-        showImage = true
-        Glide.with(activity)
-            .load(imageUrl)
-            .into(customView.imageDialog)
-    }
-
-    fun setImage(
-        image: Drawable,
-        height: Int = customView.imageDialog.height,
-        width: Int = customView.imageDialog.width
-    ) {
-        showImage = true
-        Glide.with(activity)
-            .load(image)
-            .into(customView.imageDialog)
-    }
-
-
-    private var showImage: Boolean
-        get() = false
-        set(value) {
-            if (value) {
-                customView.imageDialog.visibility = View.VISIBLE
-            }
-        }
-
-    fun okButton(title: String = "ok", callback: (color: Int, position: Int) -> Unit) {
-        customView.okButtonColorPicker.setOnClickListener {
-            dialog.dismiss()
-            callback(selectedColor, selectedPosition)
-        }
-    }
-
-    fun cancelButton(callback: ((color: Int, position: Int) -> Unit)? = null) {
-        customView.cancelButtonColorPicker.setOnClickListener {
-            dialog.dismiss()
-        }
-    }
-
-    fun defaultColorButton(callback: () -> Unit) {
-        customView.defaultColorButtonColorPicker.setOnClickListener {
-            dialog.dismiss()
-            callback()
-        }
     }
 }
 
