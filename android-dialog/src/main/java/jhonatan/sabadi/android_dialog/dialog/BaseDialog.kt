@@ -8,11 +8,10 @@ import android.graphics.drawable.ColorDrawable
 import android.util.TypedValue
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.airbnb.lottie.LottieDrawable
+import com.bumptech.glide.Glide
 import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.base_dialog.view.*
 import kotlinx.android.synthetic.main.base_dialog_actions.view.*
-import kotlinx.android.synthetic.main.lottie_dialog.view.*
 import kotlinx.android.synthetic.main.simple_dialog.view.*
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
@@ -124,12 +123,15 @@ open class BaseDialog(
     }
 
 
-    open fun setImage(lottieIMage: String) {
-        customView.lottieImage?.apply {
-            setAnimation(lottieIMage)
-            repeatCount = LottieDrawable.INFINITE
-            playAnimation()
-        }
+    fun setImage(
+        image: Int,
+        height: Int = customView.imageDialog.height,
+        width: Int = customView.imageDialog.width
+    ) {
+        showImage = true
+        Glide.with(activity)
+            .load(image)
+            .into(customView.imageDialog)
     }
 
     fun actionButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {

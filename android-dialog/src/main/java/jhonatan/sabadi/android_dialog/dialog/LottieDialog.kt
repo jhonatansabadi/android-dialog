@@ -15,7 +15,7 @@ class LottieDialog(
         setImage(lottieImage)
     }
 
-    override fun setImage(lottieIMage: String) {
+    fun setImage(lottieIMage: String) {
         customView.lottieImage.apply {
             setAnimation(lottieIMage)
             repeatCount = LottieDrawable.INFINITE

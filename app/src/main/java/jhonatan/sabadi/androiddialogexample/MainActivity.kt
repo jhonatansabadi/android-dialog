@@ -1,12 +1,8 @@
 package jhonatan.sabadi.androiddialogexample
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.android.androiddialog.dialog.colorPickerDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.android.androiddialog.dialog.lottieDialog
-import com.android.androiddialog.dialog.multiItemDialog
 import com.android.androiddialog.dialog.simpleDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,16 +12,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            colorPickerDialog(mutableListOf(Color.BLUE, Color.BLACK))  {
-                title = "Teste"
-                content = "Test"
-                actionButton("Save") {
-                    Toast.makeText(this@MainActivity, "saved", Toast.LENGTH_SHORT).show()
-                }
-                neutralButton("cancel") {
+            lottieDialog("moto.json") {
+                okButton {
                     it.dismiss()
+                    simpleDialog {
+                        setImage(R.drawable.ic_launcher_foreground)
+                        title = "teste"
+                    }
                 }
             }
+//            colorPickerDialog(mutableListOf(Color.BLUE, Color.BLACK))  {
+//                title = "Teste"
+//                content = "Test"
+//                actionButton("Save") {
+//                    it.dismiss()
+//                    Toast.makeText(this@MainActivity, "saved", Toast.LENGTH_SHORT).show()
+//                }
+//                neutralButton("cancel") {
+//                    it.dismiss()
+//                }
+//            }
         }
     }
 }
