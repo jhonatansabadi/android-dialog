@@ -25,10 +25,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/constraint_multi_choice"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageDialog"
@@ -43,7 +44,7 @@
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nestedScrollView"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/cancelButtonColorPicker"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,55 +58,57 @@
                     app:spanCount="5"
                     android:id="@+id/recyclerViewDialog"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
             </androidx.core.widget.NestedScrollView>
 
-            <TextView
-                android:id="@+id/defaultColorButtonColorPicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="@android:color/transparent"
-                android:textColor="?android:attr/textColorPrimary"
-                android:padding="16dp"
-                android:text="COR PADRÃO"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cancelButtonColorPicker" />
+            <include layout="@layout/base_dialog_actions" />
 
-            <TextView
-                android:textColor="?android:attr/textColorPrimary"
-                android:id="@+id/cancelButtonColorPicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="@android:color/transparent"
-                android:padding="16dp"
-                android:text="CANCELAR"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/okButtonColorPicker"
-                app:layout_constraintTop_toTopOf="@+id/okButtonColorPicker" />
+<!--            <TextView-->
+<!--                android:id="@+id/defaultColorButtonColorPicker"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="right"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:textColor="?android:attr/textColorPrimary"-->
+<!--                android:padding="16dp"-->
+<!--                android:text="COR PADRÃO"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/cancelButtonColorPicker" />-->
 
-            <TextView
-                android:id="@+id/okButtonColorPicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="@android:color/transparent"
-                android:padding="16dp"
-                android:text="OK"
-                android:textColor="?android:attr/colorAccent"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+<!--            <TextView-->
+<!--                android:textColor="?android:attr/textColorPrimary"-->
+<!--                android:id="@+id/cancelButtonColorPicker"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="right"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:padding="16dp"-->
+<!--                android:text="CANCELAR"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/okButtonColorPicker"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/okButtonColorPicker" />-->
 
+<!--            <TextView-->
+<!--                android:id="@+id/okButtonColorPicker"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="right"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:padding="16dp"-->
+<!--                android:text="OK"-->
+<!--                android:textColor="?android:attr/colorAccent"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent" />-->
+<!--            -->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
