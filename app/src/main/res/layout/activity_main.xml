@@ -7,14 +7,42 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/simpleDialogButton"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="290dp"
-        android:layout_marginEnd="181dp"
-        android:text="Button"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Simple Dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lottieSimpleDialogButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Lottie Dialog"
+        app:layout_constraintEnd_toEndOf="@+id/simpleDialogButton"
+        app:layout_constraintStart_toStartOf="@+id/simpleDialogButton"
+        app:layout_constraintTop_toBottomOf="@+id/simpleDialogButton" />
+
+    <Button
+        android:id="@+id/multiItemDialogButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Multi itens Dialog"
+        app:layout_constraintEnd_toEndOf="@+id/lottieSimpleDialogButton"
+        app:layout_constraintStart_toStartOf="@+id/lottieSimpleDialogButton"
+        app:layout_constraintTop_toBottomOf="@+id/lottieSimpleDialogButton" />
+
+    <Button
+        android:id="@+id/colorPickerDialogButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Color Picker Dialog"
+        app:layout_constraintEnd_toEndOf="@+id/multiItemDialogButton"
+        app:layout_constraintStart_toStartOf="@+id/multiItemDialogButton"
+        app:layout_constraintTop_toBottomOf="@+id/multiItemDialogButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

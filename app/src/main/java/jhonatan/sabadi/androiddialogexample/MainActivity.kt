@@ -1,8 +1,12 @@
 package jhonatan.sabadi.androiddialogexample
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.androiddialog.dialog.colorPickerDialog
+import com.android.androiddialog.dialog.lottieDialog
 import com.android.androiddialog.dialog.multiItemDialog
+import com.android.androiddialog.dialog.simpleDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -10,22 +14,41 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setOnClickListener {
+        simpleDialogButton.setOnClickListener {
+            simpleDialog {
+                title = "Title"
+                okButton {
+                    it.dismiss()
+                }
+            }
+        }
+
+        multiItemDialogButton.setOnClickListener {
             multiItemDialog(mutableListOf("Item 1", "Item 2"), mutableListOf(R.drawable.ic_alarm, R.drawable.ic_close)) {
                 setLottieImage("moto.json")
                 title = "Algum titulo"
+                actionButton {
+                    Toast.makeText(this@MainActivity, "OK", Toast.LENGTH_LONG).show()
+                }
+                neutralButton {
+                    it.dismiss()
+                }
             }
-//            colorPickerDialog(mutableListOf(Color.BLUE, Color.BLACK))  {
-//                title = "Teste"
-//                content = "Test"
-//                actionButton("Save") {
-//                    it.dismiss()
-//                    Toast.makeText(this@MainActivity, "saved", Toast.LENGTH_SHORT).show()
-//                }
-//                neutralButton("cancel") {
-//                    it.dismiss()
-//                }
-//            }
         }
+
+        lottieSimpleDialogButton.setOnClickListener {
+            lottieDialog("moto.json") {
+                title = "Moto"
+            }
+        }
+
+        colorPickerDialogButton.setOnClickListener {
+            colorPickerDialog(mutableListOf(R.color.blue, R.color.red)) {
+                okButton {
+                    it.dismiss()
+                }
+            }
+        }
+
     }
 }

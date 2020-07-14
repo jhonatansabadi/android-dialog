@@ -95,7 +95,10 @@ open class BaseDialog(
     var content: String
         get() = customView?.contentDialog?.text.toString()
         set(value) {
-            customView?.contentDialog?.text = value
+            customView?.apply {
+                visibility = View.VISIBLE
+                contentDialog?.text = value
+            }
         }
 
     var contentFontSize: Int
