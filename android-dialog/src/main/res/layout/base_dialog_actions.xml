@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="12dp"
@@ -25,10 +24,9 @@
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="12sp"
         android:visibility="visible"
-        app:icon="@drawable/ic_close"
         android:layout_marginEnd="8dp"
         app:iconSize="16dp"
-        app:iconTint="?android:attr/textColorPrimary"
+        app:iconTint="?android:attr/colorControlNormal"
         app:layout_constraintEnd_toStartOf="@+id/actionButtonDialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,10 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="action"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/white"
         android:textSize="12sp"
-        app:icon="@drawable/ic_directions_walk_black_24dp"
-        app:iconTint="?android:attr/textColorPrimary"
+        app:iconTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/neutralButtonDialog"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,32 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ok"
-        android:visibility="visible"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="12sp"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actionButtonDialog" />
 
-    <Button
-        android:visibility="gone"
-        android:id="@+id/cancelButtonDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/okButtonDialog"
-        app:layout_constraintEnd_toStartOf="@+id/okButtonDialog"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/defaultButtonDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/okButtonDialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/okButtonDialog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

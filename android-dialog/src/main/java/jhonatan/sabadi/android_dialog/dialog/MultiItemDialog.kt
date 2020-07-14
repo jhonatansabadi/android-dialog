@@ -1,7 +1,6 @@
 package com.android.androiddialog.dialog
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.androiddialog.adapter.MultiItemAdapter
@@ -12,9 +11,10 @@ import jhonatan.sabadi.android_dialog.dialog.BaseDialog
 import kotlinx.android.synthetic.main.multi_item_dialog.view.*
 
 class MultiItemDialog(
-    activity: Activity,
-    val itens: MutableList<String>,
-    val icons: MutableList<Int>? = null
+        activity: Activity,
+        val itens: MutableList<String>,
+        val icons: MutableList<Int>? = null,
+        val icon: Int? = null
 ) : BaseDialog(activity, R.layout.multi_item_dialog), OnRecyclerClickListener {
 
     private var onItemClick: OnItemClickListener? = null
@@ -50,19 +50,40 @@ class MultiItemDialog(
     }
 
     private fun initRecyclerView() {
+        val iconsfilled = getIconsFullfilled(icon)
         customView.recyclerViewDialog.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = MultiItemAdapter(itens, icons, this@MultiItemDialog)
+            adapter = MultiItemAdapter(itens, icons ?: iconsfilled, this@MultiItemDialog)
             hasFixedSize()
             isNestedScrollingEnabled = true
         }
     }
+
+    private fun getIconsFullfilled(icon: Int?): MutableList<Int> {
+        val iconsfilled = mutableListOf<Int>()
+        if (icons.isNullOrEmpty()) {
+            itens.forEach {
+                icon?.let {
+                    iconsfilled?.add(icon)
+                }
+            }
+        }
+        return iconsfilled
+    }
 }
 
 fun Activity.multiItemDialog(
-    itens: MutableList<String>,
-    icons: MutableList<Int>? = null,
-    init: (MultiItemDialog.() -> Unit)
+        itens: MutableList<String>,
+        icons: MutableList<Int>? = null,
+        init: (MultiItemDialog.() -> Unit)
 ) {
     MultiItemDialog(this, itens, icons).apply(init)
+}
+
+fun Activity.multiItemDialog(
+        itens: MutableList<String>,
+        icon: Int? = null,
+        init: (MultiItemDialog.() -> Unit)
+) {
+    MultiItemDialog(this, itens, null, icon).apply(init)
 }

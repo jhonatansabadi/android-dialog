@@ -2,9 +2,7 @@ package jhonatan.sabadi.androiddialogexample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.android.androiddialog.dialog.colorPickerDialog
-import com.android.androiddialog.dialog.lottieDialog
-import com.android.androiddialog.dialog.simpleDialog
+import com.android.androiddialog.dialog.multiItemDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,14 +11,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
-            colorPickerDialog(mutableListOf(R.color.black, R.color.blue)) {
-                okButton {
-                    it.dismiss()
-                    simpleDialog {
-                        setImage(R.drawable.ic_launcher_foreground)
-                        title = "teste"
-                    }
-                }
+            multiItemDialog(mutableListOf("Item 1", "Item 2"), mutableListOf(R.drawable.ic_alarm, R.drawable.ic_close)) {
+                setLottieImage("moto.json")
+                title = "Algum titulo"
             }
 //            colorPickerDialog(mutableListOf(Color.BLUE, Color.BLACK))  {
 //                title = "Teste"
