@@ -16,7 +16,9 @@ class MainActivity : AppCompatActivity() {
 
         simpleDialogButton.setOnClickListener {
             simpleDialog {
+                cancelable = false
                 title = "Title"
+                content = "Content test"
                 okButton {
                     it.dismiss()
                 }

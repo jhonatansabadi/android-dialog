@@ -95,9 +95,9 @@ open class BaseDialog(
     var content: String
         get() = customView?.contentDialog?.text.toString()
         set(value) {
-            customView?.apply {
+            customView?.contentDialog.apply {
                 visibility = View.VISIBLE
-                contentDialog?.text = value
+                text = value
             }
         }
 
