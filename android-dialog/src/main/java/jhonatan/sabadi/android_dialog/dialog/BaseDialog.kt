@@ -101,6 +101,15 @@ open class BaseDialog(
             }
         }
 
+    var contentSpannable
+        get(): CharSequence = customView?.contentDialog?.text.toString()
+        set(value) {
+            customView?.contentDialog.apply {
+                visibility = View.VISIBLE
+                text = value
+            }
+        }
+
     var contentFontSize: Int
         get() = customView.titleDialog.textSize.toInt()
         set(value) {

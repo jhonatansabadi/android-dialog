@@ -1,8 +1,10 @@
 package jhonatan.sabadi.androiddialogexample
 
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.bold
 import com.android.androiddialog.dialog.colorPickerDialog
 import com.android.androiddialog.dialog.lottieDialog
 import com.android.androiddialog.dialog.multiItemDialog
@@ -18,7 +20,10 @@ class MainActivity : AppCompatActivity() {
             simpleDialog {
                 cancelable = false
                 title = "Title"
-                content = "Content test"
+                contentSpannable = SpannableStringBuilder()
+                        .append("Teste ")
+                        .bold { append(" BOLD") }
+                        .append(" texto.")
                 okButton {
                     it.dismiss()
                 }
