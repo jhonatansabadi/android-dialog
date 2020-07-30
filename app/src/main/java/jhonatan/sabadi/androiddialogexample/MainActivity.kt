@@ -1,6 +1,7 @@
 package jhonatan.sabadi.androiddialogexample
 
 import android.os.Bundle
+import android.text.InputType
 import android.text.SpannableStringBuilder
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,11 @@ class MainActivity : AppCompatActivity() {
         editTextButton.setOnClickListener {
             editTextDialog {
                 title = "teste"
-                actionButton("teste") {}
+                setInputType(InputType.TYPE_CLASS_NUMBER)
+                hint = "Digite um número"
+                resultActionButton { dialog, result ->
+                    Toast.makeText(this@MainActivity, result, Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

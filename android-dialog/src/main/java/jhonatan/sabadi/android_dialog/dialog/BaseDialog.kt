@@ -165,6 +165,7 @@ open class BaseDialog(
         showBothButtons()
         customView.actionButtonDialog?.text = title.toUpperCase()
         customView.actionButtonDialog?.setOnClickListener {
+            dialog.dismiss()
             callback(dialog)
         }
     }
@@ -174,6 +175,7 @@ open class BaseDialog(
         showBothButtons()
         customView.neutralButtonDialog?.text = title.toUpperCase()
         customView.neutralButtonDialog?.setOnClickListener {
+            dialog.dismiss()
             callback(dialog)
         }
     }
@@ -188,7 +190,7 @@ open class BaseDialog(
         }
     }
 
-    private fun showBothButtons() {
+    internal fun showBothButtons() {
         customView.groupActinButtonDialog?.visibility = View.VISIBLE
         customView.okButtonDialog?.visibility = View.GONE
     }
