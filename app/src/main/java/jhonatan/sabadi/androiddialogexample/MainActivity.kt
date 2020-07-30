@@ -26,10 +26,30 @@ class MainActivity : AppCompatActivity() {
         }
 
         multiItemDialogButton.setOnClickListener {
-            multiItemDialog(mutableListOf("Item 1", "Item 2"), mutableListOf(R.drawable.ic_alarm, R.drawable.ic_close)) {
+            multiItemDialog(mutableListOf(
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 1",
+                    "Item 2"
+            ), R.drawable.ic_alarm) {
                 setLottieImage("moto.json")
                 title = "Algum titulo"
-                actionButton {
+                actionButton("OK") {
                     Toast.makeText(this@MainActivity, "OK", Toast.LENGTH_LONG).show()
                 }
                 neutralButton {

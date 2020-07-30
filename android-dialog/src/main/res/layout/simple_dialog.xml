@@ -33,7 +33,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageDialog"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/dimen_lottie_image"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"

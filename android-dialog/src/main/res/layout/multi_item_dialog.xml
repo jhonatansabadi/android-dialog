@@ -4,6 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
@@ -30,7 +35,7 @@
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieDialog"
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/dimen_lottie_image"
                 android:visibility="gone"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +86,7 @@
                     android:layout_height="match_parent"
                     android:overScrollMode="never"
                     android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingBottom="24dp"
                     tools:itemCount="5"
                     tools:listitem="@layout/recycler_multi_item" />
             </androidx.core.widget.NestedScrollView>
