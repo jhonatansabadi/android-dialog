@@ -9,12 +9,21 @@ import com.android.androiddialog.dialog.colorPickerDialog
 import com.android.androiddialog.dialog.lottieDialog
 import com.android.androiddialog.dialog.multiItemDialog
 import com.android.androiddialog.dialog.simpleDialog
+import jhonatan.sabadi.android_dialog.dialog.editTextDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        editTextButton.setOnClickListener {
+            editTextDialog {
+                title = "teste"
+                actionButton("teste") {}
+            }
+        }
+
 
         simpleDialogButton.setOnClickListener {
             simpleDialog {

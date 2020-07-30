@@ -45,4 +45,13 @@
         app:layout_constraintStart_toStartOf="@+id/multiItemDialogButton"
         app:layout_constraintTop_toBottomOf="@+id/multiItemDialogButton" />
 
+    <Button
+        android:id="@+id/editTextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Text Dialog"
+        app:layout_constraintEnd_toEndOf="@+id/colorPickerDialogButton"
+        app:layout_constraintStart_toStartOf="@+id/colorPickerDialogButton"
+        app:layout_constraintTop_toBottomOf="@+id/colorPickerDialogButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
