@@ -60,7 +60,7 @@ class MultiItemDialog(
             adapter = MultiItemAdapter(itens, icons ?: iconsfilled, this@MultiItemDialog)
             setHasFixedSize(true)
             isNestedScrollingEnabled = true
-            addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager(activity).orientation))
+//            addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager(activity).orientation))
         }
     }
 

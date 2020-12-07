@@ -48,32 +48,16 @@ class MainActivity : AppCompatActivity() {
             multiItemDialog(mutableListOf(
                     "Item 1",
                     "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 1",
-                    "Item 2"
+                    "Item 1"
             ), R.drawable.ic_alarm) {
                 setLottieImage("moto.json")
                 title = "Algum titulo"
-                actionButton("OK") {
-                    Toast.makeText(this@MainActivity, "OK", Toast.LENGTH_LONG).show()
-                }
-                neutralButton {
-                    it.dismiss()
-                }
+//                actionButton("OK") {
+//                    Toast.makeText(this@MainActivity, "OK", Toast.LENGTH_LONG).show()
+//                }
+//                neutralButton {
+//                    it.dismiss()
+//                }
             }
         }
 
@@ -86,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         colorPickerDialogButton.setOnClickListener {
             colorPickerDialog(mutableListOf(R.color.blue, R.color.red)) {
                 okButton {
+                    setLottieImage("moto.json")
                     it.dismiss()
                 }
             }
