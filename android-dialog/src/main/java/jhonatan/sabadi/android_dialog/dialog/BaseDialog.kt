@@ -15,16 +15,14 @@ import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.base_dialog.view.*
 import kotlinx.android.synthetic.main.base_dialog.view.titleDialog
 import kotlinx.android.synthetic.main.base_dialog_actions.view.*
-import kotlinx.android.synthetic.main.lottie_dialog.view.*
 import kotlinx.android.synthetic.main.multi_item_dialog.view.*
-import kotlinx.android.synthetic.main.simple_dialog.view.*
 import kotlinx.android.synthetic.main.simple_dialog.view.imageDialog
 import org.jetbrains.anko.internals.AnkoInternals
 import org.jetbrains.anko.textColor
 
 open class BaseDialog(
-        val activity: Activity,
-        val layoutId: Int
+    val activity: Activity,
+    val layoutId: Int
 ) : AlertDialog.Builder(activity) {
     protected lateinit var customView: View
     protected lateinit var dialog: AlertDialog
@@ -36,19 +34,19 @@ open class BaseDialog(
 
     fun setCustomView() {
         customView = activity.layoutInflater.inflate(
-                layoutId,
-                null
+            layoutId,
+            null
         )
         this.setView(customView)
     }
 
     fun setDialog() {
         dialog = this
-                .create()
-                .apply {
-                    show()
-                    window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                }
+            .create()
+            .apply {
+                show()
+                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            }
     }
 
     var cancelable: Boolean
@@ -64,10 +62,10 @@ open class BaseDialog(
         }
 
     fun setTitleStyle(
-            title: String = activity.getString(R.string.title_dialog),
-            italic: Boolean = false,
-            size: Int = customView.titleDialog.textSize.toInt(),
-            color: Int = R.color.black
+        title: String = activity.getString(R.string.title_dialog),
+        italic: Boolean = false,
+        size: Int = customView.titleDialog.textSize.toInt(),
+        color: Int = R.color.black
     ) {
         customView.titleDialog?.apply {
             if (text.toString().isNotEmpty()) {
@@ -122,10 +120,10 @@ open class BaseDialog(
         }
 
     fun setContentStyle(
-            content: String = customView.titleDialog?.text.toString(),
-            italic: Boolean = false,
-            size: Int = customView.contentDialog.textSize.toInt(),
-            color: Int = R.color.black
+        content: String = customView.titleDialog?.text.toString(),
+        italic: Boolean = false,
+        size: Int = customView.contentDialog.textSize.toInt(),
+        color: Int = R.color.black
     ) {
 
         customView.contentDialog.apply {
@@ -142,14 +140,14 @@ open class BaseDialog(
 
 
     fun setImage(
-            image: Int,
-            height: Int = customView.imageDialog.height,
-            width: Int = customView.imageDialog.width
+        image: Int,
+        height: Int = customView.imageDialog.height,
+        width: Int = customView.imageDialog.width
     ) {
         showImage = true
         Glide.with(activity)
-                .load(image)
-                .into(customView.imageDialog)
+            .load(image)
+            .into(customView.imageDialog)
     }
 
     fun setLottieImage(lottieIMage: String) {
@@ -161,7 +159,7 @@ open class BaseDialog(
         }
     }
 
-    fun actionButton(title: String = "YES", callback: (dialog: AlertDialog) -> Unit) {
+    fun actionButton(title: String = "Confirm", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
         customView.actionButtonDialog?.text = title.toUpperCase()
         customView.actionButtonDialog?.setOnClickListener {
@@ -171,7 +169,7 @@ open class BaseDialog(
     }
 
 
-    fun neutralButton(title: String = "NO", callback: (dialog: AlertDialog) -> Unit) {
+    fun neutralButton(title: String = "Cancel", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
         customView.neutralButtonDialog?.text = title.toUpperCase()
         customView.neutralButtonDialog?.setOnClickListener {
@@ -185,6 +183,7 @@ open class BaseDialog(
         customView.okButtonDialog?.apply {
             text = activity.getString(android.R.string.ok)
             setOnClickListener {
+                dialog.dismiss()
                 callback(dialog)
             }
         }

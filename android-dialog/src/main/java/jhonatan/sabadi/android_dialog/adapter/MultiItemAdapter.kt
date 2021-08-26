@@ -1,12 +1,10 @@
 package com.android.androiddialog.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
-import com.bumptech.glide.Glide
 import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.recycler_multi_item.view.*
 

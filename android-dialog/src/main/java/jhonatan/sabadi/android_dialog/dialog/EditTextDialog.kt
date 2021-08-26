@@ -11,9 +11,10 @@ import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.base_dialog_actions.view.*
 import kotlinx.android.synthetic.main.edit_text_dialog.view.*
 import kotlinx.android.synthetic.main.lottie_dialog.view.*
+import java.util.*
 
 class EditTextDialog(
-        activity: Activity
+    activity: Activity
 ) : BaseDialog(activity, R.layout.edit_text_dialog) {
 
     fun setInputType(inputType: Int) {
@@ -26,16 +27,17 @@ class EditTextDialog(
             customView.inputTextLayout.hint = value
         }
 
-    fun resultActionButton(title: String = "YES", callback: (dialog: AlertDialog, result: String) -> Unit) {
+    fun resultActionButton(
+        title: String = "YES",
+        callback: (dialog: AlertDialog, result: String) -> Unit
+    ) {
         showBothButtons()
-        customView.actionButtonDialog?.text = title.toUpperCase()
+        customView.actionButtonDialog?.text = title.uppercase(Locale.getDefault())
         customView.actionButtonDialog?.setOnClickListener {
             dialog.dismiss()
             callback(dialog, customView.inputText.text.toString())
         }
     }
-
-
 }
 
 fun Activity.editTextDialog(init: EditTextDialog.() -> Unit) {

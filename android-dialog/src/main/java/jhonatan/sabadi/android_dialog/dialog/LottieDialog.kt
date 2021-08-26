@@ -22,7 +22,6 @@ class LottieDialog(
             playAnimation()
         }
     }
-
 }
 
 fun Activity.lottieDialog(lottieImage: String, init: LottieDialog.() -> Unit) {

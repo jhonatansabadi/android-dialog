@@ -1,11 +1,8 @@
 package com.android.androiddialog.dialog
 
 import android.app.Activity
-import android.graphics.Rect
 import android.view.View
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.androiddialog.adapter.MultiItemAdapter
 import com.android.androiddialog.interfaces.OnItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
@@ -60,7 +57,6 @@ class MultiItemDialog(
             adapter = MultiItemAdapter(itens, icons ?: iconsfilled, this@MultiItemDialog)
             setHasFixedSize(true)
             isNestedScrollingEnabled = true
-//            addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager(activity).orientation))
         }
     }
 

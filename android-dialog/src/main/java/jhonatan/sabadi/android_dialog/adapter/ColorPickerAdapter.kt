@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import com.android.androiddialog.model.CheckedColor
@@ -11,24 +12,24 @@ import jhonatan.sabadi.android_dialog.R
 import kotlinx.android.synthetic.main.recycler_color_picker.view.*
 
 class ColorPickerAdapter(
-        private val onRecyclerClickListener: OnRecyclerClickListener
+    private val onRecyclerClickListener: OnRecyclerClickListener
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorPickerViewHolder>() {
 
     private val checkedColors = mutableListOf<CheckedColor>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorPickerViewHolder {
         val holder = ColorPickerViewHolder(
-                LayoutInflater.from(parent.context)
-                        .inflate(
-                                R.layout.recycler_color_picker,
-                                parent,
-                                false
-                        )
+            LayoutInflater.from(parent.context)
+                .inflate(
+                    R.layout.recycler_color_picker,
+                    parent,
+                    false
+                )
         )
         holder.itemView.setOnClickListener {
             onRecyclerClickListener.setOnRecyclerClick(
-                    holder.itemView,
-                    holder.adapterPosition
+                holder.itemView,
+                holder.adapterPosition
             )
         }
         return holder
@@ -63,14 +64,12 @@ class ColorPickerAdapter(
         holder.bind(checkedColors[position])
     }
 
-
     class ColorPickerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(checkedColor: CheckedColor) {
-            var color: Int
-            try {
-                color = ContextCompat.getColor(itemView.context, checkedColor.color)
+            val color = try {
+                ContextCompat.getColor(itemView.context, checkedColor.color)
             } catch (e: Exception) {
-                color = checkedColor.color
+                checkedColor.color
             }
             color.setRoundedIcon()
             checkedColor.setCheckedIcon()
@@ -84,11 +83,7 @@ class ColorPickerAdapter(
         }
 
         private fun CheckedColor.setCheckedIcon() {
-            if (isChecked) {
-                itemView.viewCheckRecycler.visibility = View.VISIBLE
-            } else {
-                itemView.viewCheckRecycler.visibility = View.GONE
-            }
+            itemView.viewCheckRecycler.isVisible = isChecked
         }
     }
 }

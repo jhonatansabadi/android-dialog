@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="18dp"
+        android:layout_margin="@dimen/dimen_margin_medium"
         app:cardBackgroundColor="?android:attr/colorBackground"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="@dimen/dimen_radius_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,18 +30,20 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageDialog"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/dimen_lottie_image"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lottieDialog" />
+                app:layout_constraintTop_toBottomOf="@+id/lottieDialog"
+                tools:src="@color/black"
+                tools:visibility="visible" />
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nestedScrollView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dimen_margin_min"
                 android:background="?android:attr/colorBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:overScrollMode="never"
-                    android:paddingTop="8dp"
+                    android:paddingTop="@dimen/dimen_margin_min"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="5"
                     tools:listitem="@layout/recycler_multi_item" />
@@ -73,20 +75,20 @@
                 android:id="@+id/titleDialog"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/dimen_margin_medium"
+                android:layout_marginTop="@dimen/dimen_margin_medium"
+                android:layout_marginEnd="@dimen/dimen_margin_medium"
                 android:text="Title"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="20sp"
+                android:textSize="@dimen/dimen_text_extra_large"
                 android:textStyle="normal|bold"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageDialog" />
+                app:layout_constraintTop_toBottomOf="@+id/imageDialog"
+                tools:visibility="visible" />
 
             <include
-
                 android:id="@+id/multi_item_dialog_include"
                 layout="@layout/base_dialog_actions"
                 android:layout_width="0dp"

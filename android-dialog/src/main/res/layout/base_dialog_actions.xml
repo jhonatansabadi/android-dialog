@@ -1,60 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="12dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:paddingStart="@dimen/dimen_margin_medium"
+    android:paddingTop="@dimen/dimen_margin_min"
+    android:paddingEnd="@dimen/dimen_margin_medium"
+    android:paddingBottom="@dimen/dimen_margin_detault">
 
     <androidx.constraintlayout.widget.Group
-        android:visibility="gone"
+        android:id="@+id/groupActinButtonDialog"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/groupActinButtonDialog"
-        app:constraint_referenced_ids="actionButtonDialog,neutralButtonDialog" />
+        android:visibility="gone"
+        app:constraint_referenced_ids="actionButtonDialog,neutralButtonDialog"
+        tools:visibility="visible" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/neutralButtonDialog"
-        style="?attr/materialButtonOutlinedStyle"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="cancel"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="12sp"
+        android:layout_marginEnd="@dimen/dimen_margin_min"
+        android:backgroundTint="@color/color_background_neutral_button"
+        android:elevation="0dp"
+        android:textAllCaps="false"
+        android:textColor="@color/color_neutral_button"
+        android:textSize="@dimen/dimen_text_medium"
         android:visibility="visible"
-        android:layout_marginEnd="8dp"
-        app:iconSize="16dp"
+        app:cornerRadius="@dimen/dimen_radius_default"
+        app:iconSize="@dimen/dimen_icon_size_min"
         app:iconTint="?android:attr/colorControlNormal"
         app:layout_constraintEnd_toStartOf="@+id/actionButtonDialog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cancel" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/actionButtonDialog"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="action"
+        android:layout_marginStart="@dimen/dimen_margin_min"
+        android:backgroundTint="?attr/colorPrimary"
+        android:elevation="0dp"
+        android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="@dimen/dimen_text_medium"
+        app:cornerRadius="@dimen/dimen_radius_default"
         app:iconTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/neutralButtonDialog"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="action" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/okButtonDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ok"
-        android:visibility="gone"
+        android:backgroundTint="?attr/colorPrimary"
+        android:elevation="0dp"
+        android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="@dimen/dimen_text_medium"
         android:textStyle="bold"
+        android:visibility="gone"
+        app:cornerRadius="@dimen/dimen_radius_default"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionButtonDialog" />
-
+        app:layout_constraintTop_toBottomOf="@+id/actionButtonDialog"
+        tools:text="ok"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

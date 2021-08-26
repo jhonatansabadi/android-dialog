@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dimen_lottie_image">170dp</dimen>
+    <dimen name="dimen_margin_min">8dp</dimen>
+    <dimen name="dimen_margin_detault">16dp</dimen>
+    <dimen name="dimen_margin_medium">24dp</dimen>
+    <dimen name="dimen_margin_large">32dp</dimen>
+    <dimen name="dimen_radius_default">10dp</dimen>
+
+    <dimen name="dimen_text_min">10sp</dimen>
+    <dimen name="dimen_text_default">12sp</dimen>
+    <dimen name="dimen_text_medium">14sp</dimen>
+    <dimen name="dimen_text_large">16sp</dimen>
+    <dimen name="dimen_text_extra_large">22sp</dimen>
+
+    <dimen name="dimen_icon_size_min">16dp</dimen>
+    <dimen name="dimen_icon_size_medium">20dp</dimen>
+    <dimen name="dimen_icon_size_medium_2">26dp</dimen>
+    <dimen name="dimen_icon_size_extra_large">56dp</dimen>
 </resources>

@@ -4,21 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:animationCache="true">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="18dp"
-        android:layout_marginBottom="32dp"
+        android:layout_margin="@dimen/dimen_margin_medium"
+        android:layout_marginBottom="@dimen/dimen_margin_large"
+        android:animateLayoutChanges="true"
         android:background="@drawable/delete"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="?android:attr/colorBackground"
+        app:cardCornerRadius="@dimen/dimen_radius_default"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="?android:attr/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,89 +28,57 @@
 
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/constraint_multi_choice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageDialog"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/dimen_lottie_image"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieDialog"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_lottie_image"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nestedScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/cancelButtonColorPicker"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageDialog"
-                app:layout_constraintVertical_bias="0.0">
+                android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    tools:listitem="@layout/recycler_color_picker"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="5"
+
                     android:id="@+id/recyclerViewDialog"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_margin_detault"
+                    android:layout_marginEnd="@dimen/dimen_margin_detault"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="5"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/recycler_color_picker" />
 
             </androidx.core.widget.NestedScrollView>
 
+
+
             <include layout="@layout/base_dialog_actions" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/defaultColorButtonColorPicker"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="right"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:textColor="?android:attr/textColorPrimary"-->
-<!--                android:padding="16dp"-->
-<!--                android:text="COR PADRÃO"-->
-<!--                android:textSize="12sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/cancelButtonColorPicker" />-->
-
-<!--            <TextView-->
-<!--                android:textColor="?android:attr/textColorPrimary"-->
-<!--                android:id="@+id/cancelButtonColorPicker"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="right"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:padding="16dp"-->
-<!--                android:text="CANCELAR"-->
-<!--                android:textSize="12sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/okButtonColorPicker"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/okButtonColorPicker" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/okButtonColorPicker"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="right"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:padding="16dp"-->
-<!--                android:text="OK"-->
-<!--                android:textColor="?android:attr/colorAccent"-->
-<!--                android:textSize="12sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent" />-->
-<!--            -->
-
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

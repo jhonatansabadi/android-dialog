@@ -7,18 +7,20 @@
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
     android:paddingLeft="0dp"
-    android:paddingTop="32dp"
+    android:paddingTop="@dimen/dimen_margin_large"
     android:paddingRight="0dp"
-    android:paddingBottom="32dp">
+    android:paddingBottom="@dimen/dimen_margin_large">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="18dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="@dimen/dimen_margin_medium"
+        android:layout_marginTop="@dimen/dimen_margin_large"
+        android:layout_marginEnd="@dimen/dimen_margin_medium"
+        android:layout_marginBottom="@dimen/dimen_margin_large"
         app:cardBackgroundColor="?android:attr/colorBackground"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="@dimen/dimen_radius_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,12 +37,14 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageDialog"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/dimen_lottie_image"
                 android:scaleType="centerCrop"
+                android:src="@color/black"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lottieDialog" />
+                app:layout_constraintTop_toBottomOf="@+id/lottieDialog"
+                tools:visibility="visible" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieDialog"
@@ -55,13 +59,23 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputTextLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/dimen_margin_medium"
+                android:layout_marginTop="@dimen/dimen_margin_detault"
+                android:layout_marginEnd="@dimen/dimen_margin_medium"
                 app:endIconMode="clear_text"
+                android:defaultFocusHighlightEnabled="false"
+                app:boxBackgroundColor="@color/color_background_neutral_button"
+                app:boxCornerRadiusTopStart="@dimen/dimen_radius_default"
+                app:boxCornerRadiusTopEnd="@dimen/dimen_radius_default"
+                app:boxCornerRadiusBottomStart="@dimen/dimen_radius_default"
+                app:boxCornerRadiusBottomEnd="@dimen/dimen_radius_default"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="false"
+                tools:hint="Write yout text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/include3">
@@ -88,7 +102,7 @@
                 layout="@layout/base_dialog_actions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/dimen_margin_detault"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/inputTextLayout" />

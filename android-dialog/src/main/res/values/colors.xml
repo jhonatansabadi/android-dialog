@@ -9,4 +9,8 @@
     <color name="blue">#29B6F6</color>
     <color name="green">#1DE9B6</color>
     <color name="white">#ffffff</color>
+    <color name="color_title">#4F535C</color>
+    <color name="color_subtitle">#9A9EA4</color>
+    <color name="color_background_neutral_button">#eff1f6</color>
+    <color name="color_neutral_button">#5b5c5e</color>
 </resources>

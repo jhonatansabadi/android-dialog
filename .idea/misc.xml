@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/base_dialog.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/base_dialog_actions.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/color_picker_dialog.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/edit_text_dialog.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/lottie_dialog.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/multi_item_dialog.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/recycler_color_picker.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/recycler_multi_item.xml" value="0.3489583333333333" />
+        <entry key="..\:/DEV/Android/Pessoal/android-dialog/android-dialog/src/main/res/layout/simple_dialog.xml" value="0.3489583333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

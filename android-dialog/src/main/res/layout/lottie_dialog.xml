@@ -6,18 +6,18 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_margin="@dimen/dimen_margin_medium"
+        android:layout_marginStart="@dimen/dimen_margin_medium"
+        android:layout_marginEnd="@dimen/dimen_margin_medium"
         android:background="@drawable/delete"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:cardBackgroundColor="?android:attr/colorBackground"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="@dimen/dimen_radius_default"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,5 +42,5 @@
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

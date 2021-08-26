@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
                 cancelable = false
                 title = "Title"
                 contentSpannable = SpannableStringBuilder()
-                        .append("Teste ")
-                        .bold { append(" BOLD") }
-                        .append(" texto.")
+                    .append("Teste ")
+                    .bold { append(" BOLD") }
+                    .append(" texto.")
                 okButton {
                     it.dismiss()
                 }
@@ -45,33 +45,46 @@ class MainActivity : AppCompatActivity() {
         }
 
         multiItemDialogButton.setOnClickListener {
-            multiItemDialog(mutableListOf(
+            multiItemDialog(
+                mutableListOf(
                     "Item 1",
                     "Item 1",
                     "Item 1"
-            ), R.drawable.ic_alarm) {
+                ), R.drawable.ic_alarm
+            ) {
                 setLottieImage("moto.json")
                 title = "Algum titulo"
-//                actionButton("OK") {
-//                    Toast.makeText(this@MainActivity, "OK", Toast.LENGTH_LONG).show()
-//                }
-//                neutralButton {
-//                    it.dismiss()
-//                }
             }
         }
 
         lottieSimpleDialogButton.setOnClickListener {
             lottieDialog("moto.json") {
                 title = "Moto"
+                content = "Moto running so fast..."
+                actionButton {
+
+                }
+                neutralButton {
+
+                }
             }
         }
 
         colorPickerDialogButton.setOnClickListener {
-            colorPickerDialog(mutableListOf(R.color.blue, R.color.red)) {
+            colorPickerDialog(
+                mutableListOf(
+                    R.color.blue,
+                    R.color.red,
+                    R.color.red,
+                    R.color.red,
+                    R.color.red
+                ),
+            ) {
+                setLottieImage("moto.json")
+                neutralButton {
+
+                }
                 okButton {
-                    setLottieImage("moto.json")
-                    it.dismiss()
                 }
             }
         }
