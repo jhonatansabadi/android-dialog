@@ -1,6 +1,6 @@
 package com.android.androiddialog.dialog
 
-import android.app.Activity
+import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.androiddialog.adapter.MultiItemAdapter
@@ -8,11 +8,10 @@ import com.android.androiddialog.interfaces.OnItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import jhonatan.sabadi.android_dialog.R
 import jhonatan.sabadi.android_dialog.dialog.BaseDialog
-import kotlinx.android.synthetic.main.multi_item_dialog.view.*
 
 
 class MultiItemDialog(
-    activity: Activity,
+    activity: Context,
     val itens: MutableList<String>,
     val icons: MutableList<Int>? = null,
     val icon: Int? = null
@@ -25,9 +24,9 @@ class MultiItemDialog(
     }
 
     override var title: String
-        get() = customView.titleDialog.text.toString()
+        get() = titleDialog?.text.toString()
         set(value) {
-            customView.titleDialog.apply {
+            titleDialog?.apply {
                 visibility = View.VISIBLE
                 text = value
             }
@@ -52,7 +51,7 @@ class MultiItemDialog(
 
     private fun initRecyclerView() {
         val iconsfilled = getIconsFullfilled(icon)
-        customView.recyclerViewDialog.apply {
+        recyclerViewDialog?.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = MultiItemAdapter(itens, icons ?: iconsfilled, this@MultiItemDialog)
             setHasFixedSize(true)
@@ -73,7 +72,7 @@ class MultiItemDialog(
     }
 }
 
-fun Activity.multiItemDialog(
+fun Context.multiItemDialog(
     itens: MutableList<String>,
     icons: MutableList<Int>? = null,
     init: (MultiItemDialog.() -> Unit)
@@ -81,7 +80,7 @@ fun Activity.multiItemDialog(
     MultiItemDialog(this, itens, icons).apply(init)
 }
 
-fun Activity.multiItemDialog(
+fun Context.multiItemDialog(
     itens: MutableList<String>,
     icon: Int? = null,
     init: (MultiItemDialog.() -> Unit)

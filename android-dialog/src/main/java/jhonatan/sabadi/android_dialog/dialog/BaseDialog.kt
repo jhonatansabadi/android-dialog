@@ -1,31 +1,40 @@
 package jhonatan.sabadi.android_dialog.dialog
 
-import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.constraintlayout.widget.Group
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import jhonatan.sabadi.android_dialog.R
-import kotlinx.android.synthetic.main.base_dialog.view.*
-import kotlinx.android.synthetic.main.base_dialog.view.titleDialog
-import kotlinx.android.synthetic.main.base_dialog_actions.view.*
-import kotlinx.android.synthetic.main.multi_item_dialog.view.*
-import kotlinx.android.synthetic.main.simple_dialog.view.imageDialog
-import org.jetbrains.anko.internals.AnkoInternals
-import org.jetbrains.anko.textColor
 
 open class BaseDialog(
-    val activity: Activity,
-    val layoutId: Int
+    val activity: Context,
+    val layoutId: Int,
 ) : AlertDialog.Builder(activity) {
     protected lateinit var customView: View
     protected lateinit var dialog: AlertDialog
+    protected var titleDialog: TextView? = null
+    protected var contentDialog: TextView? = null
+    protected var imageDialog: ImageView? = null
+    protected var lottieDialog: LottieAnimationView? = null
+    protected lateinit var actionButtonDialog: MaterialButton
+    protected lateinit var neutralButtonDialog: MaterialButton
+    protected lateinit var okButtonDialog: MaterialButton
+    protected lateinit var groupActinButtonDialog: Group
+    protected var recyclerViewDialog: RecyclerView? = null
 
     init {
         setCustomView()
@@ -33,10 +42,20 @@ open class BaseDialog(
     }
 
     fun setCustomView() {
-        customView = activity.layoutInflater.inflate(
+        val layoutInflater = LayoutInflater.from(activity)
+        customView = layoutInflater.inflate(
             layoutId,
             null
         )
+        titleDialog = customView.findViewById(R.id.titleDialog)
+        contentDialog = customView.findViewById(R.id.contentDialog)
+        imageDialog = customView.findViewById(R.id.imageDialog)
+        lottieDialog = customView.findViewById(R.id.lottieDialog)
+        actionButtonDialog = customView.findViewById(R.id.actionButtonDialog)
+        neutralButtonDialog = customView.findViewById(R.id.neutralButtonDialog)
+        okButtonDialog = customView.findViewById(R.id.okButtonDialog)
+        groupActinButtonDialog = customView.findViewById(R.id.groupActinButtonDialog)
+        recyclerViewDialog = customView.findViewById(R.id.recyclerViewDialog)
         this.setView(customView)
     }
 
@@ -56,18 +75,18 @@ open class BaseDialog(
         }
 
     open var title: String
-        get() = AnkoInternals.noGetter()
+        get() = ""
         set(value) {
-            customView.titleDialog?.text = value
+            titleDialog?.text = value
         }
 
     fun setTitleStyle(
         title: String = activity.getString(R.string.title_dialog),
         italic: Boolean = false,
-        size: Int = customView.titleDialog.textSize.toInt(),
+        size: Int = titleDialog?.textSize?.toInt() ?: 0,
         color: Int = R.color.black
     ) {
-        customView.titleDialog?.apply {
+        titleDialog?.apply {
             if (text.toString().isNotEmpty()) {
                 text = title
             }
@@ -80,53 +99,53 @@ open class BaseDialog(
     }
 
     var titleFontSize: Int
-        get() = customView.titleDialog.textSize.toInt()
+        get() = titleDialog?.textSize?.toInt() ?: 0
         set(value) {
-            customView.titleDialog?.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
+            titleDialog?.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
     var titleColor = ContextCompat.getColor(activity, R.color.black)
         set(value) {
-            customView.titleDialog?.textColor = ContextCompat.getColor(activity, value)
+            titleDialog?.setTextColor(ContextCompat.getColor(activity, value))
         }
 
     var content: String
-        get() = customView?.contentDialog?.text.toString()
+        get() = contentDialog?.text.toString()
         set(value) {
-            customView?.contentDialog.apply {
+            contentDialog?.apply {
                 visibility = View.VISIBLE
                 text = value
             }
         }
 
     var contentSpannable
-        get(): CharSequence = customView?.contentDialog?.text.toString()
+        get(): CharSequence = contentDialog?.text.toString()
         set(value) {
-            customView?.contentDialog.apply {
+            contentDialog?.apply {
                 visibility = View.VISIBLE
                 text = value
             }
         }
 
     var contentFontSize: Int
-        get() = customView.titleDialog.textSize.toInt()
+        get() = titleDialog?.textSize?.toInt() ?: 0
         set(value) {
-            customView.contentDialog?.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
+            contentDialog?.setTextSize(TypedValue.COMPLEX_UNIT_SP, value.toFloat())
         }
 
     var contentColor = ContextCompat.getColor(activity, R.color.black)
         set(value) {
-            customView.contentDialog?.textColor = value
+            contentDialog?.setTextColor(value)
         }
 
     fun setContentStyle(
-        content: String = customView.titleDialog?.text.toString(),
+        content: String = titleDialog?.text.toString(),
         italic: Boolean = false,
-        size: Int = customView.contentDialog.textSize.toInt(),
+        size: Int = contentDialog?.textSize?.toInt() ?: 0,
         color: Int = R.color.black
     ) {
 
-        customView.contentDialog.apply {
+        contentDialog?.apply {
             if (text.toString().isNotEmpty()) {
                 text = content
             }
@@ -141,18 +160,20 @@ open class BaseDialog(
 
     fun setImage(
         image: Int,
-        height: Int = customView.imageDialog.height,
-        width: Int = customView.imageDialog.width
+        height: Int = imageDialog?.height ?: 0,
+        width: Int = imageDialog?.width ?: 0
     ) {
         showImage = true
-        Glide.with(activity)
-            .load(image)
-            .into(customView.imageDialog)
+        imageDialog?.let {
+            Glide.with(activity)
+                .load(image)
+                .into(it)
+        }
     }
 
     fun setLottieImage(lottieIMage: String) {
         showLottieImage = true
-        customView.lottieDialog.apply {
+        lottieDialog?.apply {
             setAnimation(lottieIMage)
             repeatCount = LottieDrawable.INFINITE
             playAnimation()
@@ -161,8 +182,8 @@ open class BaseDialog(
 
     fun actionButton(title: String = "Confirm", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
-        customView.actionButtonDialog?.text = title.toUpperCase()
-        customView.actionButtonDialog?.setOnClickListener {
+        actionButtonDialog?.text = title.toUpperCase()
+        actionButtonDialog?.setOnClickListener {
             dialog.dismiss()
             callback(dialog)
         }
@@ -171,8 +192,8 @@ open class BaseDialog(
 
     fun neutralButton(title: String = "Cancel", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
-        customView.neutralButtonDialog?.text = title.toUpperCase()
-        customView.neutralButtonDialog?.setOnClickListener {
+        neutralButtonDialog?.text = title.toUpperCase()
+        neutralButtonDialog?.setOnClickListener {
             dialog.dismiss()
             callback(dialog)
         }
@@ -180,7 +201,7 @@ open class BaseDialog(
 
     fun okButton(callback: (dialog: AlertDialog) -> Unit) {
         showOnlyOkButton()
-        customView.okButtonDialog?.apply {
+        okButtonDialog?.apply {
             text = activity.getString(android.R.string.ok)
             setOnClickListener {
                 dialog.dismiss()
@@ -190,27 +211,27 @@ open class BaseDialog(
     }
 
     internal fun showBothButtons() {
-        customView.groupActinButtonDialog?.visibility = View.VISIBLE
-        customView.okButtonDialog?.visibility = View.GONE
+        groupActinButtonDialog?.visibility = View.VISIBLE
+        okButtonDialog?.visibility = View.GONE
     }
 
     private fun showOnlyOkButton() {
-        customView.groupActinButtonDialog?.visibility = View.GONE
-        customView.okButtonDialog?.visibility = View.VISIBLE
+        groupActinButtonDialog?.visibility = View.GONE
+        okButtonDialog?.visibility = View.VISIBLE
     }
 
     var actionButtonTextColor = R.attr.colorControlNormal
         set(value) {
-            customView.actionButtonDialog?.textColor = ContextCompat.getColor(activity, value)
+            actionButtonDialog?.setTextColor(ContextCompat.getColor(activity, value))
         }
 
     var neutralButtonTextColor = R.attr.colorControlNormal
         set(value) {
-            customView.neutralButtonDialog?.textColor = ContextCompat.getColor(activity, value)
+            neutralButtonDialog?.setTextColor(ContextCompat.getColor(activity, value))
         }
 
     fun setOkButtonIcon(iconRes: Int, color: Int? = null) {
-        customView.okButtonDialog.apply {
+        okButtonDialog.apply {
             icon = activity.getDrawable(iconRes)
             color?.let {
                 iconTint = ColorStateList.valueOf(ContextCompat.getColor(activity, color))
@@ -219,7 +240,7 @@ open class BaseDialog(
     }
 
     fun setActionButtonIcon(iconRes: Int, color: Int? = null) {
-        customView.actionButtonDialog.apply {
+        actionButtonDialog.apply {
             icon = activity.getDrawable(iconRes)
             color?.let {
                 iconTint = ColorStateList.valueOf(ContextCompat.getColor(activity, color))
@@ -228,7 +249,7 @@ open class BaseDialog(
     }
 
     fun setNeutralButtonIcon(iconRes: Int, color: Int? = null) {
-        customView.neutralButtonDialog.apply {
+        neutralButtonDialog.apply {
             icon = activity.getDrawable(iconRes)
             color?.let {
                 iconTint = ColorStateList.valueOf(ContextCompat.getColor(activity, color))
@@ -240,7 +261,7 @@ open class BaseDialog(
         get() = false
         set(value) {
             if (value) {
-                customView.imageDialog?.visibility = View.VISIBLE
+                imageDialog?.visibility = View.VISIBLE
             }
         }
 
@@ -248,7 +269,7 @@ open class BaseDialog(
         get() = false
         set(value) {
             if (value) {
-                customView.lottieDialog?.visibility = View.VISIBLE
+                lottieDialog?.visibility = View.VISIBLE
             }
         }
 }

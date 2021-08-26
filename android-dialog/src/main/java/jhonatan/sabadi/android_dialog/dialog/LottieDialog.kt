@@ -1,13 +1,13 @@
 package com.android.androiddialog.dialog
 
-import android.app.Activity
+import android.content.Context
 import com.airbnb.lottie.LottieDrawable
 import jhonatan.sabadi.android_dialog.R
 import jhonatan.sabadi.android_dialog.dialog.BaseDialog
-import kotlinx.android.synthetic.main.lottie_dialog.view.*
+
 
 class LottieDialog(
-    activity: Activity,
+    activity: Context,
     lottieImage: String
 ) : BaseDialog(activity, R.layout.lottie_dialog) {
 
@@ -16,7 +16,7 @@ class LottieDialog(
     }
 
     fun setImage(lottieIMage: String) {
-        customView.lottieImage.apply {
+        lottieDialog?.apply {
             setAnimation(lottieIMage)
             repeatCount = LottieDrawable.INFINITE
             playAnimation()
@@ -24,6 +24,6 @@ class LottieDialog(
     }
 }
 
-fun Activity.lottieDialog(lottieImage: String, init: LottieDialog.() -> Unit) {
+fun Context.lottieDialog(lottieImage: String, init: LottieDialog.() -> Unit) {
     LottieDialog(this, lottieImage).apply(init)
 }

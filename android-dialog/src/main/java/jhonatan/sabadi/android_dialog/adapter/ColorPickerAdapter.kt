@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
 import com.android.androiddialog.model.CheckedColor
 import jhonatan.sabadi.android_dialog.R
-import kotlinx.android.synthetic.main.recycler_color_picker.view.*
+import jhonatan.sabadi.android_dialog.databinding.RecyclerColorPickerBinding
 
 class ColorPickerAdapter(
     private val onRecyclerClickListener: OnRecyclerClickListener
@@ -19,12 +19,12 @@ class ColorPickerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorPickerViewHolder {
         val holder = ColorPickerViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(
-                    R.layout.recycler_color_picker,
-                    parent,
-                    false
-                )
+            RecyclerColorPickerBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+
         )
         holder.itemView.setOnClickListener {
             onRecyclerClickListener.setOnRecyclerClick(
@@ -64,7 +64,9 @@ class ColorPickerAdapter(
         holder.bind(checkedColors[position])
     }
 
-    class ColorPickerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ColorPickerViewHolder(
+        private val binding: RecyclerColorPickerBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(checkedColor: CheckedColor) {
             val color = try {
                 ContextCompat.getColor(itemView.context, checkedColor.color)
@@ -79,11 +81,11 @@ class ColorPickerAdapter(
         private fun Int.setRoundedIcon() {
             val drawable = itemView.context.getDrawable(R.drawable.color_round)
             drawable?.setTint(this)
-            itemView.viewColorRecycler.background = drawable
+            binding.viewColorRecycler.background = drawable
         }
 
         private fun CheckedColor.setCheckedIcon() {
-            itemView.viewCheckRecycler.isVisible = isChecked
+            binding.viewCheckRecycler.isVisible = isChecked
         }
     }
 }

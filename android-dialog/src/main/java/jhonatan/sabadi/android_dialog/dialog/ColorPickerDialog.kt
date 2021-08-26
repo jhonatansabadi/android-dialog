@@ -1,31 +1,24 @@
 package com.android.androiddialog.dialog
 
-import android.app.Activity
-import android.app.AlertDialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
+import android.content.Context
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.androiddialog.adapter.ColorPickerAdapter
 import com.android.androiddialog.interfaces.OnColorItemClickListener
 import com.android.androiddialog.interfaces.OnRecyclerClickListener
-import com.android.androiddialog.model.CheckedColor
-import com.bumptech.glide.Glide
 import jhonatan.sabadi.android_dialog.R
 import jhonatan.sabadi.android_dialog.dialog.BaseDialog
-import kotlinx.android.synthetic.main.color_picker_dialog.view.*
-import kotlinx.android.synthetic.main.color_picker_dialog.view.recyclerViewDialog
-import kotlinx.android.synthetic.main.multi_item_dialog.view.*
 
 class ColorPickerDialog(
-    activity: Activity,
+    activity: Context,
     val colors: MutableList<Int>
 ) : BaseDialog(activity, R.layout.color_picker_dialog), OnRecyclerClickListener {
 
     private var onColorClick: OnColorItemClickListener? = null
     private var selectedColor = -1
     private var selectedPosition = -1
+
 
     private val colorPickerAdapter by lazy {
         ColorPickerAdapter(this).apply {
@@ -34,13 +27,18 @@ class ColorPickerDialog(
     }
 
     init {
+        setViews()
         initRecyclerView()
         onColorClickListener()
     }
 
+    private fun setViews() {
+        recyclerViewDialog = customView.findViewById(R.id.recyclerViewDialog)
+    }
+
 
     private fun initRecyclerView() {
-        customView.recyclerViewDialog.apply {
+        recyclerViewDialog?.apply {
             layoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
             adapter = colorPickerAdapter
             hasFixedSize()
@@ -69,7 +67,7 @@ class ColorPickerDialog(
     }
 }
 
-fun Activity.colorPickerDialog(
+fun Context.colorPickerDialog(
     colors: MutableList<Int>,
     init: (ColorPickerDialog.() -> Unit)
 ) {

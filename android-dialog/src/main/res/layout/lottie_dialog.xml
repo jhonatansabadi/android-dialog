@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottieImage"
+                android:id="@+id/lottieDialog"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_lottie_image"
                 android:scaleType="centerCrop"

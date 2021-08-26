@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/imageDialog"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_lottie_image"
