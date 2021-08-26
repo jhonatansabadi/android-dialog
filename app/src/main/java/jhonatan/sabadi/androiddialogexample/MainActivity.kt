@@ -11,14 +11,17 @@ import com.android.androiddialog.dialog.lottieDialog
 import com.android.androiddialog.dialog.multiItemDialog
 import com.android.androiddialog.dialog.simpleDialog
 import jhonatan.sabadi.android_dialog.dialog.editTextDialog
-import kotlinx.android.synthetic.main.activity_main.*
+import jhonatan.sabadi.androiddialogexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        editTextButton.setOnClickListener {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.editTextButton.setOnClickListener {
             editTextDialog {
                 title = "teste"
                 setInputType(InputType.TYPE_CLASS_NUMBER)
@@ -30,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        simpleDialogButton.setOnClickListener {
+        binding.simpleDialogButton.setOnClickListener {
             simpleDialog {
                 cancelable = false
                 title = "Title"
@@ -44,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        multiItemDialogButton.setOnClickListener {
+        binding.multiItemDialogButton.setOnClickListener {
             multiItemDialog(
                 mutableListOf(
                     "Item 1",
@@ -57,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        lottieSimpleDialogButton.setOnClickListener {
+        binding.lottieSimpleDialogButton.setOnClickListener {
             lottieDialog("moto.json") {
                 title = "Moto"
                 content = "Moto running so fast..."
@@ -70,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        colorPickerDialogButton.setOnClickListener {
+        binding.colorPickerDialogButton.setOnClickListener {
             colorPickerDialog(
                 mutableListOf(
                     R.color.blue,

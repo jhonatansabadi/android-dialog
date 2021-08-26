@@ -1,6 +1,4 @@
 
-v
-Fapp/src/main/java/jhonatan/sabadi/androiddialogexample/MainActivity.kt,7\8\784d63f5dfdcaa212d7437383f30ef81a42a8658
 í
 bandroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/interfaces/OnColorItemClickListener.kt,9\a\9af441e59120a3b475cf13403ab619ea19793a6a
 ç

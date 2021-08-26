@@ -5,7 +5,6 @@ import android.content.Context
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import jhonatan.sabadi.android_dialog.R
-import kotlinx.android.synthetic.main.lottie_dialog.view.*
 import java.util.*
 
 class EditTextDialog(
