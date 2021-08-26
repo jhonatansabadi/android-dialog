@@ -182,7 +182,7 @@ open class BaseDialog(
 
     fun actionButton(title: String = "Confirm", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
-        actionButtonDialog?.text = title.toUpperCase()
+        actionButtonDialog?.text = title
         actionButtonDialog?.setOnClickListener {
             dialog.dismiss()
             callback(dialog)
@@ -192,7 +192,7 @@ open class BaseDialog(
 
     fun neutralButton(title: String = "Cancel", callback: (dialog: AlertDialog) -> Unit) {
         showBothButtons()
-        neutralButtonDialog?.text = title.toUpperCase()
+        neutralButtonDialog?.text = title
         neutralButtonDialog?.setOnClickListener {
             dialog.dismiss()
             callback(dialog)

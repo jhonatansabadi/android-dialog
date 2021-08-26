@@ -38,7 +38,7 @@ class EditTextDialog(
         callback: (dialog: AlertDialog, result: String) -> Unit
     ) {
         showBothButtons()
-        actionButtonDialog?.text = title.uppercase(Locale.getDefault())
+        actionButtonDialog?.text = title
         actionButtonDialog?.setOnClickListener {
             dialog.dismiss()
             callback(dialog, inputText.text.toString())
