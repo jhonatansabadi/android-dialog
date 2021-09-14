@@ -47,14 +47,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val items = mutableListOf<String>()
+        for (item in 0..200) {
+            items.add("Item $item")
+        }
         binding.multiItemDialogButton.setOnClickListener {
-            multiItemDialog(
-                mutableListOf(
-                    "Item 1",
-                    "Item 1",
-                    "Item 1"
-                ), R.drawable.ic_alarm
-            ) {
+            multiItemDialog(items, R.drawable.ic_alarm) {
                 setLottieImage("moto.json")
                 title = "Algum titulo"
             }

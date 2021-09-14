@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/dimen_margin_medium"
         app:cardBackgroundColor="?android:attr/colorBackground"
@@ -23,8 +23,7 @@
             android:id="@+id/constraint_multi_choice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?android:attr/colorBackground"
-            android:orientation="vertical">
+            android:background="?android:attr/colorBackground">
 
 
             <ImageView
@@ -43,7 +42,6 @@
                 android:id="@+id/nestedScrollView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_margin_min"
                 android:background="?android:attr/colorBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,11 +50,16 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewDialog"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:overScrollMode="never"
                     android:paddingTop="@dimen/dimen_margin_min"
+                    android:paddingBottom="300dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:itemCount="5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleDialog"
+                    tools:itemCount="40"
                     tools:listitem="@layout/recycler_multi_item" />
             </androidx.core.widget.NestedScrollView>
 
@@ -93,9 +96,10 @@
                 layout="@layout/base_dialog_actions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nestedScrollView3" />
+                tools:visibility="gone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

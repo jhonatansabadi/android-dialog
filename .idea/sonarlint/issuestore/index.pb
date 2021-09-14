@@ -19,3 +19,15 @@ X
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 K
 android-dialog/build.gradle,3\3\33522e945482979351b0db2b67473d6f1ae1ea7c
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+€
+Pandroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/dialog/BaseDialog.kt,3\d\3d7c96712aff715ee55dfd42d754e5c306a481b3
+‡
+Wandroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/dialog/ColorPickerDialog.kt,a\b\ab2a7788f056221b9cda5fc55d32b8c8b302e69a
+„
+Tandroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/dialog/EditTextDialog.kt,6\d\6de544a9a069025737ce88927cb4ab6ff7346660
+‚
+Randroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/dialog/LottieDialog.kt,d\7\d7ae03a88996c9352b76c960fb89da17f363e782
+‚
+Randroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/dialog/SimpleDialog.kt,0\0\0079ba24c5efa8d010cfa33428dc5298d7777618
