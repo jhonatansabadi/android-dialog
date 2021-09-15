@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             multiItemDialog(items, R.drawable.ic_alarm) {
                 setLottieImage("moto.json")
                 title = "Algum titulo"
+                neutralButton { it.dismiss() }
+                actionButton {  }
             }
         }
 

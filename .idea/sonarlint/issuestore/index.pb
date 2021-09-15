@@ -21,8 +21,6 @@ K
 android-dialog/build.gradle,3\3\33522e945482979351b0db2b67473d6f1ae1ea7c
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-€
-Pandroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/dialog/BaseDialog.kt,3\d\3d7c96712aff715ee55dfd42d754e5c306a481b3
 ‡
 Wandroid-dialog/src/main/java/jhonatan/sabadi/android_dialog/dialog/ColorPickerDialog.kt,a\b\ab2a7788f056221b9cda5fc55d32b8c8b302e69a
 „
